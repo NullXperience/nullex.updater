@@ -53,6 +53,7 @@
             android:layout_gravity="center"
             android:layout_marginBottom="65dp"
             android:text="@string/version"
+            android:fontFamily="@font/san_frans_pro_display_med"
             android:textColor="@color/white"
             android:textSize="100sp"
             android:textStyle="bold" />
@@ -61,6 +62,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="@string/nullexp"
+            android:fontFamily="@font/san_frans_display"
             android:textColor="@color/white"
             android:textSize="18sp"
             android:textStyle="bold" />
@@ -69,6 +71,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
             android:layout_gravity="center"
+            android:fontFamily="@font/san_frans_display"
             android:text="@string/modelEx"
             android:textColor="@color/white"
             android:textSize="18sp"
@@ -80,6 +83,7 @@
             android:layout_gravity="bottom|center_horizontal"
             android:layout_marginBottom="16dp"
             android:text="@string/checking"
+            android:fontFamily="@font/san_frans_display"
             android:textSize="18sp"
             android:textStyle="bold" />
     </FrameLayout>

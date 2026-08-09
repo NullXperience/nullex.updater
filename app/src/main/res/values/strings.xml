@@ -8,4 +8,6 @@
     <string name="nullexp">NullXperience</string>
     <string name="modelEx">Galaxy A55</string>
     <string name="version">8.5</string>
+    <string name="versionAndSize">%1$s | %2$s</string>
+    <string name="about_version_header">About this update</string>
 </resources>

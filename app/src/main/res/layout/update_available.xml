@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="19dp"
+    android:layout_marginTop="10dp"
+    android:orientation="vertical"
+    tools:context=".UpdatesAvailable">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:fontFamily="@font/san_frans_display"
+        android:text="@string/soft_ver"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-10dp"
+        android:layout_marginBottom="20dp"
+        android:textSize="14sp"
+        android:textColor="@color/light_gray"
+        android:fontFamily="@font/san_frans"
+        android:text="@string/versionAndSize"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="15dp"
+        android:orientation="vertical"
+        android:background="@drawable/interactive_card">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/san_frans_pro_display_med"
+            android:textSize="20sp"
+            android:text="@string/about_version_header" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="#22FFFFFF" />
+        <TextView
+            android:id="@+id/changelogHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginBottom="20dp"
+            android:textSize="15sp"
+            android:fontFamily="@font/san_frans_pro_display_med" />
+    </LinearLayout>
+</LinearLayout>

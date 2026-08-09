@@ -8,6 +8,6 @@ class MainActivity : AppCompatActivity()
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         supportFragmentManager.beginTransaction().setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
-            .replace(R.id.ThisFragmentContainer, NotFound()).addToBackStack(null).commit()
+            .replace(R.id.ThisFragmentContainer, UpdatesAvailable()).addToBackStack(null).commit()
     }
 }
