@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Null Updates</string>
+    <string name="checking">Checking for updates...</string>
+    <string name="not_found">Version up to date.</string>
+    <string name="found">New update found!</string>
+    <string name="changelogs">Tap to view update changelogs</string>
+    <string name="soft_ver">Software version</string>
+    <string name="nullexp">NullXperience</string>
+    <string name="modelEx">Galaxy A55</string>
+    <string name="version">8.5</string>
+</resources>
