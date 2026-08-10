@@ -5,47 +5,39 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginTop="25dp"
     android:orientation="vertical"
     tools:context=".MainActivity">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="40dp">
-        <ImageButton
-            android:id="@+id/exit"
-            android:src="@drawable/arrow_back"
-            android:background="@android:color/transparent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+        android:layout_height="64dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp">
         <TextView
-            android:layout_marginTop="8dp"
-            android:layout_marginStart="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="24sp"
-            android:text="@string/app_name"/>
-        <View
+            android:id="@+id/appTitle"
             android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:layout_height="0dp" />
-        <ImageView
-            android:layout_marginTop="12dp"
-            android:layout_marginEnd="20dp"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:src="@drawable/menu_icon"/>
+            android:fontFamily="@font/san_frans_display"
+            android:letterSpacing="0.01"
+            android:text="@string/app_name"
+            android:textSize="22sp"
+            android:textStyle="bold" />
     </LinearLayout>
     <FrameLayout
-        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/bannerSize"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:background="@drawable/main_card">
         <ImageView
-            android:layout_width="@dimen/bannerSize"
-            android:layout_height="@dimen/bannerSize"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
             android:scaleType="centerCrop"
-            android:src="@drawable/generic_banner" />
+            android:src="@drawable/main_card" />
         <TextView
             android:id="@+id/verInt"
             android:layout_width="wrap_content"
@@ -69,8 +61,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
             android:layout_gravity="center"
+            android:layout_marginTop="25dp"
             android:fontFamily="@font/san_frans_display"
             android:text="@string/modelEx"
             android:textColor="@color/white"
@@ -83,6 +75,7 @@
             android:layout_gravity="bottom|center_horizontal"
             android:layout_marginBottom="16dp"
             android:text="@string/checking"
+            android:textColor="@color/white"
             android:fontFamily="@font/san_frans_display"
             android:textSize="18sp"
             android:textStyle="bold" />

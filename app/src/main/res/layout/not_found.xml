@@ -14,14 +14,15 @@
         android:fontFamily="@font/san_frans_display"
         android:text="@string/soft_ver"/>
     <TextView
+        android:id="@+id/currentVersion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="-10dp"
         android:textSize="14sp"
         android:textColor="@color/light_gray"
-        android:fontFamily="@font/san_frans"
-        android:text="version://148025/"/>
+        android:fontFamily="@font/san_frans"/>
     <TextView
+        android:id="@+id/lastChangelog"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="14sp"

@@ -49,7 +49,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginEnd="20dp"
+            android:textSize="20sp"
+            android:fontFamily="@font/san_frans_pro_display_med" />
+        <TextView
+            android:id="@+id/changelogText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
             android:layout_marginBottom="20dp"
+            android:layout_marginEnd="20dp"
             android:textSize="15sp"
             android:fontFamily="@font/san_frans_pro_display_med" />
     </LinearLayout>
