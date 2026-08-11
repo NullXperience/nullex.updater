@@ -19,7 +19,7 @@
         android:layout_marginTop="-10dp"
         android:layout_marginBottom="20dp"
         android:textSize="14sp"
-        android:textColor="@color/light_gray"
+        android:textColor="#ADADAD"
         android:fontFamily="@font/san_frans"
         android:text="@string/versionAndSize"/>
     <LinearLayout
@@ -43,7 +43,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
-            android:background="#22FFFFFF" />
+            android:background="?attr/dividerColor" />
         <TextView
             android:id="@+id/changelogHeader"
             android:layout_width="wrap_content"

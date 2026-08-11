@@ -24,7 +24,13 @@ class NotFound : Fragment()
         currentVersion.text = Build.ID;
         statusText.text = getString(R.string.not_found);
         changelog.setOnClickListener {
-
+            requireActivity().supportFragmentManager.beginTransaction()
+                .replace(
+                    R.id.ThisFullscreenFragment,
+                    ShowChangelogs()
+                )
+                .addToBackStack(null)
+                .commit()
         }
     }
 }

@@ -19,7 +19,7 @@ data class ChangelogReference (
     val changelogs: String
 )
 object RetrofitClient {
-    private const val BASE_URL = "https://raw.githubusercontent.com/bkerler/mtkclient/refs/heads/main/"
+    private const val BASE_URL = "https://raw.githubusercontent.com/NullXperience/json_ota/refs/heads/main/"
     val githubUserContent: RetrofitInterface by lazy {
         Retrofit.Builder().baseUrl(BASE_URL).addConverterFactory(GsonConverterFactory.create()).build().create(RetrofitInterface::class.java)
     }
