@@ -22,7 +22,7 @@ class ShowChangelogs : Fragment() {
         val chgTxt: TextView = view.findViewById(R.id.changelogText);
         curVersion.text = "1.0.0"
         lifecycleScope.launch {
-            val otaResData: FetchDataActivity.OtaData = FetchDataActivity.OtaData;
+            val otaResData: MainScreenFragment.OtaData = MainScreenFragment.OtaData;
             otaResData.load();
             chgHead.text = otaResData.preferredModel?.changelogs?.get("1.0.0")?.changelogHeader;
             chgTxt.text = otaResData.preferredModel?.changelogs?.get("1.0.0")?.changelogs;

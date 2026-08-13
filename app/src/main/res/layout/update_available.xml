@@ -61,6 +61,7 @@
             android:layout_marginBottom="20dp"
             android:layout_marginEnd="20dp"
             android:textSize="15sp"
-            android:fontFamily="@font/san_frans_pro_display_med" />
+            android:fontFamily="@font/san_frans_pro_display_med"
+            android:visibility="gone" />
     </LinearLayout>
 </LinearLayout>

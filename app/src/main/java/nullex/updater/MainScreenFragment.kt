@@ -6,10 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.launch
-
+import nullex.updater.fetchOTA.OtaModel
+import nullex.updater.fetchOTA.RetrofitClient
 class MainScreenFragment : Fragment()
 {
-    private val currentVersion: String = "1.0.1"
+    private val currentVersion: String = "1.0.1";
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
     {
         // Inflate the layout for this fragment
@@ -19,11 +20,20 @@ class MainScreenFragment : Fragment()
     {
         super.onViewCreated(view, savedInstanceState);
         lifecycleScope.launch {
-            val otaResData: FetchDataActivity.OtaData = FetchDataActivity.OtaData;
+            val otaResData = OtaData;
             otaResData.load();
             val lastestVersion = otaResData.preferredModel?.version;
             if(lastestVersion == currentVersion) parentFragmentManager.beginTransaction().replace(R.id.ThisFragmentContainer,
                 NotFound()).commit();
+        }
+    }
+    object OtaData {
+        var preferredModel: OtaModel? = null
+            private set;
+        suspend fun load()
+        {
+            val response = RetrofitClient.githubUserContent.getOtaInfo();
+            preferredModel = response.models["device_one"];
         }
     }
 }

@@ -1,8 +1,8 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <style name="Base.Theme.NullUpdates" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="backgroundColor">@android:color/white</item>
-        <item name="interactiveCard">#20000000</item>
-        <item name="interactiveCardStroke">#30000000</item>
+        <item name="interactiveCard">#E6E6E6</item>
+        <item name="interactiveCardStroke">#1F000000</item>
         <item name="dividerColor">#22000000</item>
     </style>
 </resources>
