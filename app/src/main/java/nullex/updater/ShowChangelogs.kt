@@ -5,9 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.text.HtmlCompat
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.launch
-
 class ShowChangelogs : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
     {
@@ -19,13 +19,12 @@ class ShowChangelogs : Fragment() {
         super.onViewCreated(view, savedInstanceState);
         val curVersion: TextView = view.findViewById(R.id.currentVersion);
         val chgHead: TextView = view.findViewById(R.id.changelogHeader);
-        val chgTxt: TextView = view.findViewById(R.id.changelogText);
-        curVersion.text = "1.0.0"
+        val chgTxt: TextView = view.findViewById(R.id.changelogText)
+        val msr: String = MainScreenFragment.OtaData.getVersion();
+        curVersion.text = msr;
         lifecycleScope.launch {
-            val otaResData: MainScreenFragment.OtaData = MainScreenFragment.OtaData;
-            otaResData.load();
-            chgHead.text = otaResData.preferredModel?.changelogs?.get("1.0.0")?.changelogHeader;
-            chgTxt.text = otaResData.preferredModel?.changelogs?.get("1.0.0")?.changelogs;
+            chgHead.text = MainScreenFragment.OtaData.preferredModel!!.changelogs[msr]!!.changelogHeader;
+            chgTxt.text = HtmlCompat.fromHtml(MainScreenFragment.OtaData.preferredModel!!.changelogs[msr]!!.changelogs, HtmlCompat.FROM_HTML_MODE_LEGACY);
         }
     }
 }

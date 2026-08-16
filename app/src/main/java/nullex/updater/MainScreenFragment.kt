@@ -1,16 +1,17 @@
 package nullex.updater
+import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.launch
 import nullex.updater.fetchOTA.OtaModel
 import nullex.updater.fetchOTA.RetrofitClient
 class MainScreenFragment : Fragment()
 {
-    private val currentVersion: String = "1.0.1";
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
     {
         // Inflate the layout for this fragment
@@ -19,21 +20,39 @@ class MainScreenFragment : Fragment()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?)
     {
         super.onViewCreated(view, savedInstanceState);
-        lifecycleScope.launch {
-            val otaResData = OtaData;
-            otaResData.load();
-            val lastestVersion = otaResData.preferredModel?.version;
-            if(lastestVersion == currentVersion) parentFragmentManager.beginTransaction().replace(R.id.ThisFragmentContainer,
-                NotFound()).commit();
+        val ovrTXT: TextView = view.findViewById(R.id.overlayTextView);
+        viewLifecycleOwner.lifecycleScope.launch {
+            OtaData.load();
+            if(OtaData.isSupported)
+            {
+                try {
+                    val ver = OtaData.getVersion();
+                    if(OtaData.preferredModel!!.version == ver)
+                    {
+                        parentFragmentManager.beginTransaction()
+                            .setCustomAnimations(R.anim.slide_in, R.anim.fade_out, R.anim.fade_in, R.anim.slide_out)
+                            .replace(R.id.ThisFragmentContainer, NotFound()).commit();
+                    }
+                }
+                catch(e: Exception)
+                {
+                    ovrTXT.text = getString(R.string.unknown);
+                }
+            }
+            else ovrTXT.text = getString(R.string.tampered_supported);
         }
     }
     object OtaData {
         var preferredModel: OtaModel? = null
             private set;
+        var isSupported: Boolean = false;
         suspend fun load()
         {
             val response = RetrofitClient.githubUserContent.getOtaInfo();
-            preferredModel = response.models["device_one"];
+            preferredModel = response.models[Build.MODEL];
+            val supportedDevices = response.supported.split(",").map { it.trim() }
+            isSupported = Build.MODEL.trim() in supportedDevices;
         }
+        fun getVersion(): String = Build.DISPLAY.split(" ").getOrNull(1) ?: "null";
     }
 }

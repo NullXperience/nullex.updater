@@ -2,7 +2,8 @@ package nullex.updater.fetchOTA
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 data class OtaResponse (
-    val models: Map<String, OtaModel>
+    val models: Map<String, OtaModel>,
+    val supported: String
 )
 data class OtaModel (
     val changelogs: Map<String, ChangelogReference>,

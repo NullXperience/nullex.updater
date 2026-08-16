@@ -6,8 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import okhttp3.internal.wait
-
 class NotFound : Fragment()
 {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
@@ -25,10 +23,8 @@ class NotFound : Fragment()
         statusText.text = getString(R.string.not_found);
         changelog.setOnClickListener {
             requireActivity().supportFragmentManager.beginTransaction()
-                .replace(
-                    R.id.ThisFullscreenFragment,
-                    ShowChangelogs()
-                )
+                .setCustomAnimations(R.anim.slide_in, R.anim.fade_out, R.anim.fade_in, R.anim.slide_out)
+                .replace(R.id.ThisFullscreenFragment, ShowChangelogs())
                 .addToBackStack(null)
                 .commit()
         }
