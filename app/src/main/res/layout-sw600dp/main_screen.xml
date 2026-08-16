@@ -102,6 +102,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical" />
+            <TextView
+                android:id="@+id/no_internet_text"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#ADADAD"
+                android:text="@string/no_internet"/>
         </FrameLayout>
     </LinearLayout>
 </LinearLayout>
