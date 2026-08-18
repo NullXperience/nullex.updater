@@ -20,7 +20,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:fontFamily="@font/san_frans_display"
+            android:fontFamily="@font/inter_semibold"
             android:letterSpacing="0.01"
             android:text="@string/app_name"
             android:textSize="22sp"
@@ -45,7 +45,7 @@
             android:layout_gravity="center"
             android:layout_marginBottom="65dp"
             android:text="@string/version"
-            android:fontFamily="@font/san_frans_pro_display_med"
+            android:fontFamily="@font/inter_extra_bold"
             android:textColor="@android:color/white"
             android:textSize="100sp"
             android:textStyle="bold" />
@@ -54,7 +54,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="@string/nullexp"
-            android:fontFamily="@font/san_frans_display"
+            android:fontFamily="@font/inter_medium"
             android:textColor="@android:color/white"
             android:textSize="18sp"
             android:textStyle="bold" />
@@ -64,7 +64,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="28dp"
-            android:fontFamily="@font/san_frans_display"
+            android:fontFamily="@font/inter_medium"
             android:textColor="@android:color/white"
             android:textSize="18sp"
             android:textStyle="bold" />
@@ -76,7 +76,7 @@
             android:layout_marginBottom="16dp"
             android:text="@string/checking"
             android:textColor="@android:color/white"
-            android:fontFamily="@font/san_frans_display"
+            android:fontFamily="@font/inter_regular"
             android:textSize="18sp"
             android:textStyle="bold" />
     </FrameLayout>
@@ -98,5 +98,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#ADADAD"
+        android:fontFamily="@font/inter_medium"
         android:text="@string/no_internet"/>
 </LinearLayout>

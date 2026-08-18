@@ -4,5 +4,6 @@
         <item name="interactiveCard">#E6E6E6</item>
         <item name="interactiveCardStroke">#1F000000</item>
         <item name="dividerColor">#22000000</item>
+        <item name="downloadCard">#6B6BE6</item>
     </style>
 </resources>

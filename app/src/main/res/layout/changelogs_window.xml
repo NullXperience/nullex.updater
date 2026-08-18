@@ -4,22 +4,13 @@
     android:id="@+id/changelogs"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="30dp"
+    android:layout_marginTop="40dp"
     android:layout_marginStart="20dp"
     android:layout_marginEnd="20dp"
     android:orientation="vertical"
     tools:context=".ShowChangelogs">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/san_frans_display"
-        android:text="Changelogs"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginBottom="15dp"
-        android:textSize="22sp"
-        android:textStyle="bold" />
     <LinearLayout
+        android:id="@+id/softverview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/interactive_card"
@@ -29,7 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
-            android:fontFamily="@font/san_frans_display"
+            android:fontFamily="@font/inter_semibold"
             android:text="@string/soft_ver"
             android:textSize="18sp" />
         <TextView
@@ -37,10 +28,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="15dp"
             android:textSize="14sp"
             android:textColor="#ADADAD"
-            android:fontFamily="@font/san_frans"/>
+            android:fontFamily="@font/inter_medium"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -55,7 +47,7 @@
             android:layout_marginTop="15dp"
             android:layout_marginStart="20dp"
             android:layout_marginBottom="10dp"
-            android:fontFamily="@font/san_frans_display"
+            android:fontFamily="@font/inter_semibold"
             android:text="@string/about_version_header"/>
         <View
             android:layout_width="match_parent"
@@ -65,30 +57,22 @@
             android:layout_marginBottom="10dp"
             android:background="#22FFFFFF" />
         <TextView
-            android:id="@+id/changelogHeader"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginBottom="5dp"
-            android:layout_marginEnd="20dp"
-            android:textSize="20sp"
-            android:fontFamily="@font/san_frans_pro_display_med" />
-        <TextView
             android:id="@+id/changelogText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginBottom="20dp"
+            android:layout_marginTop="5dp"
             android:layout_marginEnd="20dp"
             android:textSize="15sp"
-            android:fontFamily="@font/san_frans" />
+            android:fontFamily="@font/inter_medium" />
     </LinearLayout>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:fontFamily="@font/san_frans_display"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/inter_extra_bold"
         android:textSize="14sp"
         android:text="@string/must_know"/>
     <TextView
@@ -96,7 +80,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="5dp"
-        android:fontFamily="@font/san_frans"
+        android:fontFamily="@font/inter_medium"
         android:textSize="12sp"
         android:text="@string/firstKnow"/>
     <TextView
@@ -104,7 +88,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="5dp"
-        android:fontFamily="@font/san_frans"
+        android:fontFamily="@font/inter_medium"
         android:textSize="12sp"
         android:text="@string/secondKnown"/>
 </LinearLayout>

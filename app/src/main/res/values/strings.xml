@@ -2,7 +2,7 @@
     <string name="app_name">Null Updates</string>
     <string name="checking">Checking for updates…</string>
     <string name="not_found">Version up to date.</string>
-    <string name="found">New update found!</string>
+    <string name="found">Update Available</string>
     <string name="changelogs">Tap to view update changelogs</string>
     <string name="soft_ver">Software version</string>
     <string name="nullexp">NullXperience</string>
@@ -15,4 +15,5 @@
     <string name="unknown">Unknown device or no new updates found.</string>
     <string name="tampered_supported">OTA info failed: System property changed.</string>
     <string name="no_internet">No Internet Connection Available</string>
+    <string name="update_available_chip">Download &amp; Install</string>
 </resources>

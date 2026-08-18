@@ -16,10 +16,9 @@
             android:id="@+id/appTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/san_frans_display"
+            android:fontFamily="@font/inter_semibold"
             android:letterSpacing="0.01"
             android:text="@string/app_name"
-            android:textColor="#191919"
             android:textSize="30sp"
             android:textStyle="bold" />
     </LinearLayout>
@@ -51,7 +50,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginBottom="58dp"
-                android:fontFamily="@font/san_frans_pro_display_med"
+                android:fontFamily="@font/inter_extra_bold"
                 android:text="@string/version"
                 android:textColor="@android:color/white"
                 android:textSize="104sp"
@@ -61,7 +60,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="6dp"
-                android:fontFamily="@font/san_frans_display"
+                android:fontFamily="@font/inter_medium"
                 android:text="@string/nullexp"
                 android:textColor="@android:color/white"
                 android:textSize="19sp"
@@ -72,7 +71,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="38dp"
-                android:fontFamily="@font/san_frans_display"
+                android:fontFamily="@font/inter_medium"
                 android:textColor="@android:color/white"
                 android:textSize="19sp"
                 android:textStyle="bold" />
@@ -82,7 +81,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|center_horizontal"
                 android:layout_marginBottom="28dp"
-                android:fontFamily="@font/san_frans_display"
+                android:fontFamily="@font/inter_regular"
                 android:text="@string/checking"
                 android:textColor="@android:color/white"
                 android:textSize="17sp"
@@ -92,7 +91,6 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.75"
-            android:background="#FFFFFF"
             android:paddingStart="28dp"
             android:paddingEnd="28dp"
             android:paddingTop="28dp"
@@ -108,6 +106,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="#ADADAD"
+                android:fontFamily="@font/inter_medium"
                 android:text="@string/no_internet"/>
         </FrameLayout>
     </LinearLayout>

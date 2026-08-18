@@ -1,4 +1,4 @@
-package nullex.updater.fetchOTA
+package nullex.updater.fetchOTAMetadata
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 data class OtaResponse (
@@ -7,17 +7,17 @@ data class OtaResponse (
 )
 data class OtaModel (
     val changelogs: Map<String, ChangelogReference>,
-    val version: String,
-    val url: String,
-    val sha256: String,
-    val size: Long,
-    val isMB: Boolean,
-    val isIncremental: Boolean,
-    val isFull: Boolean
+    val version: String
 )
 data class ChangelogReference (
     val changelogHeader: String,
-    val changelogs: String
+    val changelogs: String,
+    val buildid: String,
+    val isIncremental: Boolean,
+    val isFull: Boolean,
+    val url: String,
+    val sha256: String,
+    val size: String,
 )
 object RetrofitClient {
     private const val BASE_URL = "https://raw.githubusercontent.com/NullXperience/json_ota/refs/heads/main/"

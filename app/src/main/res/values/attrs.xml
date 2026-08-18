@@ -3,4 +3,5 @@
     <attr name="interactiveCard" format="color" />
     <attr name="interactiveCardStroke" format="color" />
     <attr name="dividerColor" format="color" />
+    <attr name="downloadCard" format="color" />
 </resources>

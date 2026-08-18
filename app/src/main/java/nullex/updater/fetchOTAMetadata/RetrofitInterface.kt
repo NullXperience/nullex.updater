@@ -1,4 +1,4 @@
-package nullex.updater.fetchOTA
+package nullex.updater.fetchOTAMetadata
 import retrofit2.http.GET
 interface RetrofitInterface {
     @GET("ota.json")
