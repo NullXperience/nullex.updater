@@ -1,5 +1,6 @@
 package nullex.updater
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -7,7 +8,12 @@ import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.core.text.HtmlCompat
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.launch
+import nullex.updater.fetchOTA.FetchOTA
+
 class UpdatesAvailable : Fragment()
 {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
@@ -29,9 +35,24 @@ class UpdatesAvailable : Fragment()
         verSize.text = getString(R.string.versionAndSize, metadata.buildID, metadata.size);
         changelogText.text = HtmlCompat.fromHtml(metadata.versionSpecific!!.changelogs, HtmlCompat.FROM_HTML_MODE_LEGACY);
         changelogsAct.setOnClickListener {
-            parentFragmentManager.beginTransaction()
-                .setCustomAnimations(R.anim.pull_up_from_bottom,R.anim.none,R.anim.pop_enter, R.anim.push_out_to_bottom)
-                .addToBackStack(null).replace(R.id.ThisFullscreenFragment, ShowChangelogs()).commit();
+            if(resources.configuration.smallestScreenWidthDp < 600)
+            {
+                parentFragmentManager.beginTransaction()
+                    .setCustomAnimations(R.anim.pull_up_from_bottom,R.anim.none,R.anim.pop_enter, R.anim.push_out_to_bottom)
+                    .addToBackStack(null).replace(R.id.ThisFullscreenFragment, ShowChangelogs()).commit();
+            }
+        }
+        downloadButton.setOnClickListener {
+            viewLifecycleOwner.lifecycleScope.launch {
+                try
+                {
+                    FetchOTA.downloadOTA()
+                }
+                catch(e: Exception)
+                {
+                    Toast.makeText(context, "Download failed: $e", Toast.LENGTH_SHORT).show()
+                }
+            }
         }
     }
 }

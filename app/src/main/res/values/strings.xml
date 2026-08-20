@@ -13,7 +13,6 @@
     <string name="firstKnow">1. If you encounter any problems when using the new version, please take a log and send it on GitHub.</string>
     <string name="secondKnown">2. Let the rom settle for a day to get the best experience.</string>
     <string name="unknown">Unknown device or no new updates found.</string>
-    <string name="tampered_supported">OTA info failed: System property changed.</string>
     <string name="no_internet">No Internet Connection Available</string>
     <string name="update_available_chip">Download &amp; Install</string>
 </resources>

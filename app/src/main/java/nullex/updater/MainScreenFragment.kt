@@ -9,14 +9,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.launch
 import nullex.updater.fetchModelName.ModelNameRetro
 import nullex.updater.fetchOTAMetadata.OtaModel
 import nullex.updater.fetchOTAMetadata.RetrofitClient
 import nullex.updater.fetchOTAMetadata.ChangelogReference
-
 class MainScreenFragment : Fragment()
 {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
@@ -28,41 +26,32 @@ class MainScreenFragment : Fragment()
     {
         super.onViewCreated(view, savedInstanceState);
         val ovrTXT: TextView = view.findViewById(R.id.overlayTextView);
-        if(isInternetAvailable())
-        {
-            viewLifecycleOwner.lifecycleScope.launch {
-                OtaMetadata.load();
-                view.findViewById<TextView>(R.id.model).text = OtaMetadata.deviceName;
-                if(OtaMetadata.isSupported)
-                {
-                    try {
-                        if(OtaMetadata.preferredModel!!.version == OtaMetadata.currentSystemVersion)
-                        {
-                            ovrTXT.text = getString(R.string.not_found);
-                            parentFragmentManager.beginTransaction()
-                                .setCustomAnimations(R.anim.slide_in, R.anim.fade_out, R.anim.fade_in, R.anim.slide_out)
-                                .replace(R.id.ThisFragmentContainer, NotFound()).commit();
-                        }
-                        else if(OtaMetadata.preferredModel!!.version != OtaMetadata.currentSystemVersion)
-                        {
-                            ovrTXT.text = getString(R.string.found);
-                            parentFragmentManager.beginTransaction()
-                                .setCustomAnimations(R.anim.slide_in, R.anim.fade_out, R.anim.fade_in, R.anim.slide_out)
-                                .replace(R.id.ThisFragmentContainer, UpdatesAvailable()).commit();
-                        }
-                    }
-                    catch(e: Exception)
-                    {
-                        ovrTXT.text = getString(R.string.unknown);
-                    }
-                }
-                else ovrTXT.text = getString(R.string.tampered_supported);
-            }
-        }
-        else
+        if(!isInternetAvailable())
         {
             ovrTXT.visibility = View.GONE;
             view.findViewById<TextView>(R.id.no_internet_text).visibility = View.VISIBLE;
+        }
+        else viewLifecycleOwner.lifecycleScope.launch {
+            OtaMetadata.load();
+            view.findViewById<TextView>(R.id.model).text = OtaMetadata.deviceName;
+            if(!OtaMetadata.isSupported || OtaMetadata.preferredModel?.version == OtaMetadata.currentSystemVersion)
+            {
+                if(OtaMetadata.isSupported)
+                {
+                    ovrTXT.text = getString(R.string.not_found);
+                    parentFragmentManager.beginTransaction()
+                        .setCustomAnimations(R.anim.slide_in, R.anim.fade_out, R.anim.fade_in, R.anim.slide_out)
+                        .replace(R.id.ThisFragmentContainer, NotFound()).commit();
+                }
+                else ovrTXT.text = getString(R.string.unknown);
+            }
+            else if(OtaMetadata.preferredModel?.version != OtaMetadata.currentSystemVersion)
+            {
+                ovrTXT.text = getString(R.string.found);
+                parentFragmentManager.beginTransaction()
+                    .setCustomAnimations(R.anim.slide_in, R.anim.fade_out, R.anim.fade_in, R.anim.slide_out)
+                    .replace(R.id.ThisFragmentContainer, UpdatesAvailable()).commit();
+            }
         }
     }
     fun isInternetAvailable(): Boolean
@@ -72,7 +61,7 @@ class MainScreenFragment : Fragment()
         return capabilities?.hasCapability(NetworkCapabilities.NET_CAPABILITY_VALIDATED) == true;
     }
     object OtaMetadata {
-        var deviceName: String = Build.MODEL
+        var deviceName: String? = null
             private set
         var buildID: String? = null
             private set
@@ -88,28 +77,32 @@ class MainScreenFragment : Fragment()
             private set
         var versionSpecific: ChangelogReference? = null
             private set
-        var isSupported: Boolean = false
-            private set
         var isIncremental: Boolean = false
             private set
+        var isSupported: Boolean = false
+            private set
         var expandVersionInfo: Boolean = true
-        val currentSystemVersion: String =
-            Build.DISPLAY.split(" ").getOrNull(1) ?: "1.0.0"
-        suspend fun load() {
+        var currentSystemVersion: String? = null
+            private set;
+        suspend fun load()
+        {
             val metadata = RetrofitClient.githubUserContent.getOtaInfo();
-            val devices = ModelNameRetro.modelNameGitContent.getDevices();
-            deviceName = devices[Build.MODEL]?.name ?: Build.MODEL;
-            isSupported = Build.MODEL.trim() in metadata.supported;
-            preferredModel = metadata.models[deviceName];
-            val model = preferredModel ?: return;
-            latestVersion = model.version;
-            versionSpecific = model.changelogs[model.version];
-            val version = versionSpecific ?: return;
-            OTAUrl = version.url;
-            SHA256 = version.sha256;
-            size = version.size;
-            buildID = version.buildid;
-            isIncremental = version.isIncremental;
+            val deviceModel = ModelNameRetro.modelNameGitContent.getDevices();
+            //init
+            currentSystemVersion = Build.DISPLAY.split(" ").getOrNull(1) ?: "1.0.0";
+            deviceName = deviceModel[Build.MODEL]?.name ?: Build.MODEL;
+            isSupported = deviceName?.let { name -> metadata.supported.split(",").any { it.trim().equals(name.trim(), ignoreCase = true) } } == true;
+            if(isSupported)
+            {
+                preferredModel = metadata.models[deviceName];
+                latestVersion = preferredModel!!.version;
+                versionSpecific = preferredModel!!.changelogs[preferredModel!!.version];
+                OTAUrl = versionSpecific!!.url;
+                SHA256 = versionSpecific!!.sha256;
+                size = versionSpecific!!.size;
+                buildID = versionSpecific!!.buildid;
+                isIncremental = versionSpecific!!.isIncremental;
+            }
         }
     }
 }

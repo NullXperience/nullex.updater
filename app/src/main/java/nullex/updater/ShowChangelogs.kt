@@ -10,6 +10,7 @@ import androidx.core.text.HtmlCompat
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.launch
 class ShowChangelogs : Fragment() {
+    private lateinit var msr: String;
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
     {
         // Inflate the layout for this fragment
@@ -22,10 +23,13 @@ class ShowChangelogs : Fragment() {
         val curVersion: TextView = view.findViewById(R.id.currentVersion);
         val chgTxt: TextView = view.findViewById(R.id.changelogText)
         val sv: LinearLayout = view.findViewById(R.id.softverview);
-        //val msr: String = metadata.getVersion();
-        // before we do anything, let's hide/unhide sv.
-        if(!metadata.expandVersionInfo) sv.visibility = View.GONE;
-        val msr: String = "1.0.1"
+        // before we do anything, let's hide/unhide sv and also, change the version target to the latest.
+        if(!metadata.expandVersionInfo)
+        {
+            sv.visibility = View.GONE;
+            msr = metadata.latestVersion.toString();
+        }
+        else msr = metadata.currentSystemVersion.toString();
         curVersion.text = msr;
         lifecycleScope.launch {
             chgTxt.text = HtmlCompat.fromHtml(metadata.preferredModel!!.changelogs[msr]!!.changelogs, HtmlCompat.FROM_HTML_MODE_LEGACY);

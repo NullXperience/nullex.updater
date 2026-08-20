@@ -7,7 +7,7 @@
     android:layout_height="wrap_content"
     android:layout_marginTop="25dp"
     android:orientation="vertical"
-    tools:context=".FetchDataActivity">
+    tools:context=".MainScreenActivity">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="64dp"
@@ -32,12 +32,6 @@
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:background="@drawable/main_card">
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@android:color/transparent"
-            android:scaleType="centerCrop"
-            android:src="@drawable/main_card" />
         <TextView
             android:id="@+id/verInt"
             android:layout_width="wrap_content"

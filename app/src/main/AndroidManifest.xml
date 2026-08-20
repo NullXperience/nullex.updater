@@ -8,7 +8,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:theme="@style/Base.Theme.NullUpdates" >
         <activity
-            android:name=".FetchDataActivity"
+            android:name=".MainScreenActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustResize">
             <intent-filter>

@@ -1,113 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".FetchDataActivity">
+    android:layout_height="wrap_content"
+    android:layout_marginTop="20dp"
+    android:orientation="horizontal"
+    tools:context=".MainScreenActivity">
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="96dp"
-        android:gravity="center_vertical"
-        android:paddingStart="56dp"
-        android:paddingEnd="56dp">
+        android:layout_width="620dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
         <TextView
             android:id="@+id/appTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
             android:fontFamily="@font/inter_semibold"
             android:letterSpacing="0.01"
             android:text="@string/app_name"
-            android:textSize="30sp"
+            android:textSize="22sp"
             android:textStyle="bold" />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="horizontal"
-        android:baselineAligned="false"
-        android:paddingStart="56dp"
-        android:paddingEnd="56dp"
-        android:paddingBottom="48dp">
         <FrameLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1.45"
-            android:layout_marginEnd="32dp"
-            android:background="@drawable/main_card"
-            tools:ignore="NestedWeights">
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:contentDescription="@null"
-                android:scaleType="centerCrop"
-                android:src="@drawable/main_card" />
+            android:layout_width="match_parent"
+            android:layout_height="600dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/main_card">
             <TextView
                 android:id="@+id/verInt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginBottom="58dp"
+                android:layout_marginBottom="65dp"
                 android:fontFamily="@font/inter_extra_bold"
                 android:text="@string/version"
                 android:textColor="@android:color/white"
-                android:textSize="104sp"
+                android:textSize="100sp"
                 android:textStyle="bold" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="6dp"
                 android:fontFamily="@font/inter_medium"
                 android:text="@string/nullexp"
                 android:textColor="@android:color/white"
-                android:textSize="19sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
             <TextView
                 android:id="@+id/model"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="38dp"
+                android:layout_marginTop="28dp"
                 android:fontFamily="@font/inter_medium"
                 android:textColor="@android:color/white"
-                android:textSize="19sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
             <TextView
                 android:id="@+id/overlayTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|center_horizontal"
-                android:layout_marginBottom="28dp"
+                android:layout_marginBottom="16dp"
                 android:fontFamily="@font/inter_regular"
                 android:text="@string/checking"
                 android:textColor="@android:color/white"
-                android:textSize="17sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
         </FrameLayout>
-        <FrameLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.75"
-            android:paddingStart="28dp"
-            android:paddingEnd="28dp"
-            android:paddingTop="28dp"
-            android:paddingBottom="28dp">
-            <androidx.fragment.app.FragmentContainerView
-                android:id="@+id/ThisFragmentContainer"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical" />
-            <TextView
-                android:id="@+id/no_internet_text"
-                android:layout_gravity="center"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#ADADAD"
-                android:fontFamily="@font/inter_medium"
-                android:text="@string/no_internet"/>
-        </FrameLayout>
     </LinearLayout>
+    <FrameLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginStart="14dp"
+        android:layout_weight="1"
+        android:padding="4dp">
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/ThisFragmentContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+        <TextView
+            android:id="@+id/no_internet_text"
+            android:layout_marginTop="100dp"
+            android:visibility="gone"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#ADADAD"
+            android:fontFamily="@font/inter_medium"
+            android:text="@string/no_internet"/>
+    </FrameLayout>
 </LinearLayout>
