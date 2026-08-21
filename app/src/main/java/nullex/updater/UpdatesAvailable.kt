@@ -1,7 +1,7 @@
 package nullex.updater
 import android.content.res.ColorStateList
+import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -16,7 +16,6 @@ import androidx.lifecycle.lifecycleScope
 import com.google.android.material.color.MaterialColors
 import kotlinx.coroutines.launch
 import nullex.updater.fetchOTA.FetchOTA
-
 class UpdatesAvailable : Fragment()
 {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
@@ -55,7 +54,7 @@ class UpdatesAvailable : Fragment()
             viewLifecycleOwner.lifecycleScope.launch {
                 try
                 {
-                    FetchOTA.downloadOTA()
+                    FetchOTA.downloadOTA(requireContext(), metadata.actualDeviceName, false);
                 }
                 catch(e: Exception)
                 {

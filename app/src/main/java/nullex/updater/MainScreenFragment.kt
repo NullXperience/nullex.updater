@@ -61,6 +61,7 @@ class MainScreenFragment : Fragment()
         return capabilities?.hasCapability(NetworkCapabilities.NET_CAPABILITY_VALIDATED) == true;
     }
     object OtaMetadata {
+        lateinit var actualDeviceName: String;
         var deviceName: String? = null
             private set
         var buildID: String? = null
@@ -79,7 +80,7 @@ class MainScreenFragment : Fragment()
             private set
         var isIncremental: Boolean = false
             private set
-        var isSupported: Boolean = false
+        var isSupported: Boolean = true
             private set
         var expandVersionInfo: Boolean = true
         var currentSystemVersion: String? = null
@@ -91,10 +92,12 @@ class MainScreenFragment : Fragment()
             //init
             currentSystemVersion = Build.DISPLAY.split(" ").getOrNull(1) ?: "1.0.0";
             deviceName = deviceModel[Build.MODEL]?.name ?: Build.MODEL;
-            isSupported = deviceName?.let { name -> metadata.supported.split(",").any { it.trim().equals(name.trim(), ignoreCase = true) } } == true;
+            //actualDeviceName = Build.MODEL.toString();
+            actualDeviceName = "device_one"
+            // isSupported = deviceName?.let { name -> metadata.supported.split(",").any { it.trim().equals(name.trim(), ignoreCase = true) } } == true;
             if(isSupported)
             {
-                preferredModel = metadata.models[deviceName];
+                preferredModel = metadata.models["device_one"];
                 latestVersion = preferredModel!!.version;
                 versionSpecific = preferredModel!!.changelogs[preferredModel!!.version];
                 OTAUrl = versionSpecific!!.url;

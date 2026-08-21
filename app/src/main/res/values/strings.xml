@@ -15,4 +15,5 @@
     <string name="unknown">Unknown device or no new updates found.</string>
     <string name="no_internet">No Internet Connection Available</string>
     <string name="update_available_chip">Download &amp; Install</string>
+    <string name="multi_window_warn">App does not support split screen views. Adjust to see the contents if possible.</string>
 </resources>
