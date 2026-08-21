@@ -4,7 +4,7 @@ plugins {
 
 android {
     namespace = "nullex.updater"
-    compileSdk = 37
+    compileSdkPreview = "DEV"
 
     defaultConfig {
         applicationId = "nullex.updater"
@@ -19,6 +19,8 @@ android {
             optimization {
                 enable = false
             }
+            applicationIdSuffix = ".sha"
+            signingConfig = signingConfigs.getByName("debug")
         }
     }
     compileOptions {
@@ -30,7 +32,6 @@ android {
 dependencies {
     implementation(libs.androidx.activity.ktx)
     implementation(libs.androidx.appcompat)
-    implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.core.ktx)
     implementation(libs.material)
     implementation(libs.retrofit)
