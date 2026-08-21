@@ -1,4 +1,5 @@
 package nullex.updater
+import android.content.res.ColorStateList
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -9,8 +10,10 @@ import android.widget.FrameLayout
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.graphics.ColorUtils
 import androidx.core.text.HtmlCompat
 import androidx.lifecycle.lifecycleScope
+import com.google.android.material.color.MaterialColors
 import kotlinx.coroutines.launch
 import nullex.updater.fetchOTA.FetchOTA
 
@@ -27,9 +30,15 @@ class UpdatesAvailable : Fragment()
         // init lol
         val metadata = MainScreenFragment.OtaMetadata;
         val downloadButton: FrameLayout = view.findViewById(R.id.downloadButton);
+        val downloadButtonText: TextView = view.findViewById(R.id.downloadButtonText);
         val verSize: TextView = view.findViewById(R.id.buildidwithsize);
         val changelogText: TextView = view.findViewById(R.id.changelogText);
         val changelogsAct: LinearLayout = view.findViewById(R.id.changelogsAction);
+        val bannerColor = MaterialColors.getColor(changelogsAct, R.attr.interactiveCard);
+        downloadButton.backgroundTintList = ColorStateList.valueOf(bannerColor);
+        val buttonTextColor = if (ColorUtils.calculateContrast(Color.WHITE, bannerColor) >=
+            ColorUtils.calculateContrast(Color.BLACK, bannerColor)) Color.WHITE else Color.BLACK;
+        downloadButtonText.setTextColor(buttonTextColor);
         // lets uhrm- idk i just wanted to write some comment so..
         metadata.expandVersionInfo = false;
         verSize.text = getString(R.string.versionAndSize, metadata.buildID, metadata.size);
