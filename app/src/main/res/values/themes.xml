@@ -5,5 +5,8 @@
         <item name="interactiveCardStroke">#1F000000</item>
         <item name="dividerColor">#22000000</item>
         <item name="downloadCard">#6B6BE6</item>
+        <!-- the freaking download button -->
+        <item name="downloadSolid">#12000000</item>
+        <item name="downloadStroke">#20000000</item>
     </style>
 </resources>

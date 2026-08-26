@@ -2,12 +2,14 @@ package nullex.updater
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
+// import android.os.RecoverySystem TODO
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.LinearLayout
+import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.graphics.ColorUtils
@@ -34,11 +36,13 @@ class UpdatesAvailable : Fragment()
         val changelogText: TextView = view.findViewById(R.id.changelogText);
         val changelogsAct: LinearLayout = view.findViewById(R.id.changelogsAction);
         val bannerColor = MaterialColors.getColor(changelogsAct, R.attr.interactiveCard);
+        val progressBar = view.findViewById<ProgressBar>(R.id.progressBar);
         downloadButton.backgroundTintList = ColorStateList.valueOf(bannerColor);
         val buttonTextColor = if (ColorUtils.calculateContrast(Color.WHITE, bannerColor) >=
             ColorUtils.calculateContrast(Color.BLACK, bannerColor)) Color.WHITE else Color.BLACK;
         downloadButtonText.setTextColor(buttonTextColor);
         // lets uhrm- idk i just wanted to write some comment so..
+        progressBar.progress = 0;
         metadata.expandVersionInfo = false;
         verSize.text = getString(R.string.versionAndSize, metadata.buildID, metadata.size);
         changelogText.text = HtmlCompat.fromHtml(metadata.versionSpecific!!.changelogs, HtmlCompat.FROM_HTML_MODE_LEGACY);
@@ -52,9 +56,11 @@ class UpdatesAvailable : Fragment()
         }
         downloadButton.setOnClickListener {
             viewLifecycleOwner.lifecycleScope.launch {
-                try
-                {
-                    ClientManager.downloadOTA(requireContext(), metadata.actualDeviceName, false);
+                try {
+                    downloadButtonText.text = getString(R.string.downloading);
+                    val otaFile = ClientManager.downloadOTA(requireContext(), metadata.actualDeviceName, metadata.isIncremental, progressBar);
+                    downloadButtonText.text = getString(R.string.tap2Install);
+                    TODO("implement installer");
                 }
                 catch(e: Exception)
                 {

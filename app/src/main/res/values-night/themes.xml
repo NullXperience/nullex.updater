@@ -5,5 +5,7 @@
         <item name="interactiveCardStroke">#30FFFFFF</item>
         <item name="dividerColor">#22FFFFFF</item>
         <item name="downloadCard">#5B5BD6</item>
+        <item name="downloadSolid">#12FFFFFF</item>
+        <item name="downloadStroke">#20FFFFFF</item>
     </style>
 </resources>

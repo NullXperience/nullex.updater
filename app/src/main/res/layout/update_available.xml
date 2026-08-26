@@ -67,15 +67,20 @@
         android:layout_height="50dp"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/download_button">
+        android:layout_marginBottom="10dp">
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:max="100"
+            android:progressDrawable="@drawable/download_button" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/downloadButtonText"
             android:layout_gravity="center"
             android:fontFamily="@font/inter_medium"
-            android:text="@string/update_available_chip"
-            android:textColor="@android:color/white" />
+            android:text="@string/update_available_chip" />
     </FrameLayout>
 </LinearLayout>
