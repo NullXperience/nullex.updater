@@ -11,10 +11,9 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.launch
-import nullex.updater.fetchModelName.ModelNameRetro
-import nullex.updater.fetchOTAMetadata.OtaModel
-import nullex.updater.fetchOTAMetadata.RetrofitClient
-import nullex.updater.fetchOTAMetadata.ChangelogReference
+import nullex.updater.fetch.api.ClientManager
+import nullex.updater.fetch.api.ChangelogReference
+import nullex.updater.fetch.api.OtaModel
 class MainScreenFragment : Fragment()
 {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
@@ -87,8 +86,8 @@ class MainScreenFragment : Fragment()
             private set;
         suspend fun load()
         {
-            val metadata = RetrofitClient.githubUserContent.getOtaInfo();
-            val deviceModel = ModelNameRetro.modelNameGitContent.getDevices();
+            val metadata = ClientManager.getOtaInfo();
+            val deviceModel = ClientManager.getDevices();
             //init
             currentSystemVersion = Build.DISPLAY.split(" ").getOrNull(1) ?: "1.0.0";
             deviceName = deviceModel[Build.MODEL]?.name ?: Build.MODEL;

@@ -15,7 +15,7 @@ import androidx.core.text.HtmlCompat
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.color.MaterialColors
 import kotlinx.coroutines.launch
-import nullex.updater.fetchOTA.FetchOTA
+import nullex.updater.fetch.api.ClientManager
 class UpdatesAvailable : Fragment()
 {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
@@ -54,7 +54,7 @@ class UpdatesAvailable : Fragment()
             viewLifecycleOwner.lifecycleScope.launch {
                 try
                 {
-                    FetchOTA.downloadOTA(requireContext(), metadata.actualDeviceName, false);
+                    ClientManager.downloadOTA(requireContext(), metadata.actualDeviceName, false);
                 }
                 catch(e: Exception)
                 {
