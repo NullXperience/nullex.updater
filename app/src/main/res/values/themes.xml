@@ -1,12 +1,22 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <style name="Base.Theme.NullUpdates" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="backgroundColor">@android:color/white</item>
-        <item name="interactiveCard">#E6E6E6</item>
-        <item name="interactiveCardStroke">#1F000000</item>
-        <item name="dividerColor">#22000000</item>
-        <item name="downloadCard">#6B6BE6</item>
-        <!-- the freaking download button -->
-        <item name="downloadSolid">#12000000</item>
-        <item name="downloadStroke">#20000000</item>
+        <!-- Cards -->
+        <item name="otaBgCardOuter">#FFFFFF</item>
+        <item name="otaBgCardInner">#F7F8FA</item>
+        <!-- Main -->
+        <item name="otaBgOuter">#F4F5F7</item>
+        <item name="otaBgInner">#F7F8FA</item>
+        <item name="otaBorder">#E1E3E8</item>
+        <item name="otaPillBackground">#EDEFF2</item>
+        <item name="otaTextPrim">#14151A</item>
+        <item name="otaTextSec">#5F636D</item>
+        <item name="otaTextMuted">#8B8F99</item>
+        <item name="otaPillText">#4B4F58</item>
+        <item name="otaAccent">#1D9E75</item>
+        <item name="otaAccentDim">#0F6E56</item>
+        <item name="otaAccentOn">#FFFFFF</item>
+        <item name="otaWarning">#BA7517</item>
+        <item name="otaError">#A32D2D</item>
     </style>
 </resources>

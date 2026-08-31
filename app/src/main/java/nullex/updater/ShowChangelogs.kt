@@ -1,15 +1,8 @@
 package nullex.updater
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.LinearLayout
-import android.widget.TextView
-import androidx.core.text.HtmlCompat
-import androidx.lifecycle.lifecycleScope
-import kotlinx.coroutines.launch
-class ShowChangelogs : Fragment() {
+class ShowChangelogs
+{
+    val placebooooo = 1;
+    /*
     private lateinit var msr: String;
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
     {
@@ -35,4 +28,5 @@ class ShowChangelogs : Fragment() {
             chgTxt.text = HtmlCompat.fromHtml(metadata.preferredModel!!.changelogs[msr]!!.changelogs, HtmlCompat.FROM_HTML_MODE_LEGACY);
         }
     }
+    */
 }

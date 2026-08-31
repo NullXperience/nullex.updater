@@ -1,94 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/changelogs"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="40dp"
-    android:layout_marginStart="20dp"
-    android:layout_marginEnd="20dp"
+    android:layout_height="match_parent"
+    android:background="?attr/otaBgOuter"
     android:orientation="vertical"
-    tools:context=".ShowChangelogs">
+    android:padding="16dp">
     <LinearLayout
-        android:id="@+id/softverview"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/interactive_card"
-        android:orientation="vertical">
-        <TextView
-            android:layout_width="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="10dp"
-            android:fontFamily="@font/inter_semibold"
-            android:text="@string/soft_ver"
-            android:textSize="18sp" />
-        <TextView
-            android:id="@+id/currentVersion"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="15dp"
-            android:textSize="14sp"
-            android:textColor="#ADADAD"
-            android:fontFamily="@font/inter_medium"/>
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inter_semibold"
+                android:text="Changelog"
+                android:textColor="?attr/otaTextPrim"
+                android:textSize="20sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:fontFamily="@font/inter_regular"
+                android:text="What's new"
+                android:textColor="?attr/otaTextMuted"
+                android:textSize="12sp" />
+        </LinearLayout>
     </LinearLayout>
-    <LinearLayout
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/changelogRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/interactive_card"
-        android:orientation="vertical">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="19sp"
-            android:layout_marginTop="15dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginBottom="10dp"
-            android:fontFamily="@font/inter_semibold"
-            android:text="@string/about_version_header"/>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="10dp"
-            android:background="#22FFFFFF" />
-        <TextView
-            android:id="@+id/changelogText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginBottom="20dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="20dp"
-            android:textSize="15sp"
-            android:fontFamily="@font/inter" />
-    </LinearLayout>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="15dp"
-        android:fontFamily="@font/inter_extra_bold"
-        android:textSize="14sp"
-        android:text="@string/must_know"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="5dp"
-        android:fontFamily="@font/inter_medium"
-        android:textSize="12sp"
-        android:text="@string/firstKnow"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="5dp"
-        android:fontFamily="@font/inter_medium"
-        android:textSize="12sp"
-        android:text="@string/secondKnown"/>
+        android:layout_height="0dp"
+        android:layout_marginTop="18dp"
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:overScrollMode="ifContentScrolls"
+        android:paddingBottom="16dp"
+        tools:listitem="@layout/item_changelog" />
 </LinearLayout>

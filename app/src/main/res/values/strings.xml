@@ -1,21 +1,12 @@
 <resources>
     <string name="app_name">Null Updates</string>
     <string name="checking">Checking for updates…</string>
-    <string name="not_found">Version up to date.</string>
-    <string name="found">Update Available</string>
-    <string name="changelogs">Tap to view update changelogs</string>
-    <string name="soft_ver">Software version</string>
-    <string name="nullexp">NullXperience</string>
     <string name="version">8.5</string>
-    <string name="versionAndSize">%1$s | %2$s</string>
-    <string name="about_version_header">About this update</string>
-    <string name="must_know">Must-knows</string>
-    <string name="firstKnow">1. If you encounter any problems when using the new version, please take a log and send it on GitHub.</string>
-    <string name="secondKnown">2. Let the rom settle for a day to get the best experience.</string>
-    <string name="unknown">Unknown device or no new updates found.</string>
-    <string name="no_internet">No Internet Connection Available</string>
-    <string name="update_available_chip">Download &amp; Install</string>
-    <string name="multi_window_warn">App does not support split screen views. Adjust to see the contents if possible.</string>
-    <string name="downloading">Downloading...</string>
-    <string name="tap2Install">Tap to begin installation.</string>
+    <string name="build_version_label">Build version</string>
+    <string name="status_up_to_date">Up to date</string>
+    <string name="status_update_available">Update available</string>
+    <string name="status_error">Couldn\'t check for update</string>
+    <string name="check_for_update">Check for update</string>
+    <string name="view_changelog">View changelog</string>
+    <string name="nullexp">NullXperience</string>
 </resources>

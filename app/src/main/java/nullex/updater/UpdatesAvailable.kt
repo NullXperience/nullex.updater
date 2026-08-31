@@ -1,30 +1,14 @@
 package nullex.updater
-import android.content.res.ColorStateList
-import android.graphics.Color
 import android.os.Bundle
 // import android.os.RecoverySystem TODO
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.FrameLayout
-import android.widget.LinearLayout
-import android.widget.ProgressBar
-import android.widget.TextView
-import android.widget.Toast
-import androidx.core.graphics.ColorUtils
-import androidx.core.text.HtmlCompat
-import androidx.lifecycle.lifecycleScope
-import com.google.android.material.color.MaterialColors
-import kotlinx.coroutines.launch
-import nullex.updater.fetch.api.ClientManager
-class UpdatesAvailable : Fragment()
+class UpdatesAvailable
 {
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
-    {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.update_available, container, false)
-    }
+    val placebo = 1;
+    /*
     override fun onViewCreated(view: View, savedInstanceState: Bundle?)
     {
         super.onViewCreated(view, savedInstanceState);
@@ -69,4 +53,5 @@ class UpdatesAvailable : Fragment()
             }
         }
     }
+     */
 }

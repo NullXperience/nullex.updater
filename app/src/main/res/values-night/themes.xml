@@ -1,11 +1,22 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <style name="Base.Theme.NullUpdates" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="backgroundColor">@android:color/black</item>
-        <item name="interactiveCard">#191919</item>
-        <item name="interactiveCardStroke">#30FFFFFF</item>
-        <item name="dividerColor">#22FFFFFF</item>
-        <item name="downloadCard">#5B5BD6</item>
-        <item name="downloadSolid">#12FFFFFF</item>
-        <item name="downloadStroke">#20FFFFFF</item>
+        <!-- Cards -->
+        <item name="otaBgCardOuter">#18191D</item>
+        <item name="otaBgCardInner">#202126</item>
+        <!-- Main -->
+        <item name="otaBgOuter">#101114</item>
+        <item name="otaBgInner">#202126</item>
+        <item name="otaBorder">#303239</item>
+        <item name="otaPillBackground">#292B31</item>
+        <item name="otaTextPrim">#F1F2F4</item>
+        <item name="otaTextSec">#B5B8C0</item>
+        <item name="otaTextMuted">#858994</item>
+        <item name="otaPillText">#C5C8CF</item>
+        <item name="otaAccent">#35B98A</item>
+        <item name="otaAccentDim">#1D8A68</item>
+        <item name="otaAccentOn">#FFFFFF</item>
+        <item name="otaWarning">#E0A458</item>
+        <item name="otaError">#E06B6B</item>
     </style>
 </resources>

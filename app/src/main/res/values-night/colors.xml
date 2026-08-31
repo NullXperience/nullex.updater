@@ -1,0 +1,23 @@
+<resources>
+    <!-- Surfaces -->
+    <color name="ota_bg_outer">#101114</color>
+    <color name="ota_bg_card_outer">#18191D</color>
+    <color name="ota_bg_card_inner">#202126</color>
+    <color name="ota_border">#303239</color>
+    <color name="ota_pill_bg">#292B31</color>
+
+    <!-- Text -->
+    <color name="ota_text_primary">#F1F2F4</color>
+    <color name="ota_text_secondary">#B5B8C0</color>
+    <color name="ota_text_muted">#858994</color>
+    <color name="ota_pill_text">#C5C8CF</color>
+
+    <!-- Accent / status -->
+    <color name="ota_accent">#35B98A</color>
+    <color name="ota_accent_dim">#1D8A68</color>
+    <color name="ota_accent_on">#FFFFFF</color>
+
+    <!-- States -->
+    <color name="ota_warning">#E0A458</color>
+    <color name="ota_error">#E06B6B</color>
+</resources>

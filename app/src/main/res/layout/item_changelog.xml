@@ -1,0 +1,56 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    android:background="@drawable/bg_card_inter"
+    android:orientation="vertical"
+    android:padding="18dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/changelogVersion"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="monospace"
+            android:textColor="?attr/otaTextPrim"
+            android:textSize="19sp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/latestBadge"
+            android:layout_width="wrap_content"
+            android:layout_height="28dp"
+            android:background="@drawable/bg_pill"
+            android:fontFamily="@font/inter_medium"
+            android:gravity="center"
+            android:paddingStart="9dp"
+            android:paddingEnd="9dp"
+            android:text="LATEST"
+            android:textColor="?attr/otaAccent"
+            android:textSize="10sp"
+            android:visibility="gone" />
+    </LinearLayout>
+    <TextView
+        android:id="@+id/changelogDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:fontFamily="@font/inter_regular"
+        android:textColor="?attr/otaTextMuted"
+        android:textSize="11sp" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginBottom="13dp"
+        android:background="?attr/otaBorder" />
+    <LinearLayout
+        android:id="@+id/changesContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" />
+</LinearLayout>

@@ -13,22 +13,6 @@ class Helper
 {
     private val externPath = "/storage/emulated/0/Android/data/nullex.updater/files/"
     private var thisCallFailed: Boolean = false;
-    fun safeShellExecution(commandsToExecute: Array<String>): Int
-    {
-        return try {
-            val proc = Runtime.getRuntime().exec(commandsToExecute);
-            val stderr = proc.errorStream.bufferedReader().use { it.readText() };
-            val stdout = proc.inputStream.bufferedReader().use { it.readText() };
-            proc.waitFor();
-            consoleLog(LogType.LOG_LEVEL_STDERR, "safeShellExecution", stderr.ifBlank { stdout });
-            proc.exitValue();
-        }
-        catch(e: Exception) {
-            consoleLog(LogType.LOG_LEVEL_ERROR, "safeShellExecution", "Failed to run given command");
-            consoleLog(LogType.LOG_LEVEL_ERROR, "safeShellExecution", e.toString());
-            -1;
-        }
-    }
     fun consoleLog(logg: LogType, service: String, message: String) {
         val theLogFile = File(externPath, "logs");
         try

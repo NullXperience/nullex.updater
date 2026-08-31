@@ -1,19 +1,9 @@
 package nullex.updater
-import android.content.Context.CONNECTIVITY_SERVICE
-import android.net.ConnectivityManager
-import android.net.NetworkCapabilities
-import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.lifecycle.lifecycleScope
-import kotlinx.coroutines.launch
-import nullex.updater.fetch.api.ClientManager
-import nullex.updater.fetch.api.ChangelogReference
-import nullex.updater.fetch.api.OtaModel
 class MainScreenFragment : Fragment()
 {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
@@ -21,6 +11,7 @@ class MainScreenFragment : Fragment()
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.main_screen, container, false)
     }
+    /*
     override fun onViewCreated(view: View, savedInstanceState: Bundle?)
     {
         super.onViewCreated(view, savedInstanceState);
@@ -107,4 +98,5 @@ class MainScreenFragment : Fragment()
             }
         }
     }
+    */
 }

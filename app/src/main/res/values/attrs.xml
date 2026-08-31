@@ -6,4 +6,19 @@
     <attr name="downloadCard" format="color" />
     <attr name="downloadSolid" format="color" />
     <attr name="downloadStroke" format="color" />
+    <attr name="otaBgOuter" format="color" />
+    <attr name="otaBgInner" format="color" />
+    <attr name="otaBorder" format="color" />
+    <attr name="otaPillBackground" format="color" />
+    <attr name="otaTextPrim" format="color" />
+    <attr name="otaTextSec" format="color" />
+    <attr name="otaTextMuted" format="color" />
+    <attr name="otaPillText" format="color" />
+    <attr name="otaAccent" format="color" />
+    <attr name="otaAccentDim" format="color" />
+    <attr name="otaAccentOn" format="color" />
+    <attr name="otaWarning" format="color" />
+    <attr name="otaError" format="color" />
+    <attr name="otaBgCardInner" format="color" />
+    <attr name="otaBgCardOuter" format="color" />
 </resources>
