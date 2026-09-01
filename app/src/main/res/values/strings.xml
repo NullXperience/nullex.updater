@@ -9,4 +9,5 @@
     <string name="check_for_update">Check for update</string>
     <string name="view_changelog">View changelog</string>
     <string name="nullexp">NullXperience</string>
+    <string name="currentdev">CURRENT DEVICE</string>
 </resources>

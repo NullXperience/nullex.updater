@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <attr name="interactiveCard" format="color" />
-    <attr name="interactiveCardStroke" format="color" />
-    <attr name="dividerColor" format="color" />
-    <attr name="downloadCard" format="color" />
-    <attr name="downloadSolid" format="color" />
-    <attr name="downloadStroke" format="color" />
     <attr name="otaBgOuter" format="color" />
     <attr name="otaBgInner" format="color" />
     <attr name="otaBorder" format="color" />
@@ -21,4 +15,6 @@
     <attr name="otaError" format="color" />
     <attr name="otaBgCardInner" format="color" />
     <attr name="otaBgCardOuter" format="color" />
+    <attr name="mainCardSolid" format="color" />
+    <attr name="mainCardStroke" format="color" />
 </resources>

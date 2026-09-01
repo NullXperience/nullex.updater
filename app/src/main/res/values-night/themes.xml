@@ -18,5 +18,8 @@
         <item name="otaAccentOn">#FFFFFF</item>
         <item name="otaWarning">#E0A458</item>
         <item name="otaError">#E06B6B</item>
+        <!-- card -->
+        <item name="mainCardSolid">#30FFFFFF</item>
+        <item name="mainCardStroke">#55FFFFFF</item>
     </style>
 </resources>

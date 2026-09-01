@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:layout_marginTop="40dp"
+    android:layout_marginTop="45dp"
     android:paddingHorizontal="20dp"
     tools:context=".MainScreenActivity">
     <LinearLayout
@@ -44,6 +44,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginEnd="3dp"
+        android:layout_marginTop="2dp"
         android:layout_marginStart="2.8dp"
         android:background="@drawable/bg_card_outer">
         <LinearLayout
@@ -56,53 +57,36 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/inter_medium"
                 android:letterSpacing="0.02"
-                android:text="@string/build_version_label"
+                android:text="@string/currentdev"
                 android:textColor="?attr/otaTextMuted"
                 android:textSize="12sp" />
             <TextView
-                android:id="@+id/verInt"
+                android:id="@+id/currentDevice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:layout_marginBottom="14dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="12dp"
                 android:fontFamily="@font/inter"
-                android:text="@string/version"
                 android:textColor="?attr/otaTextPrim"
                 android:textSize="38sp"
-                android:textStyle="bold" />
-            <LinearLayout
+                android:textStyle="bold"
+                tools:text="OnePlus 13s" />
+            <TextView
+                android:id="@+id/codename"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:orientation="horizontal">
-                <TextView
-                    android:id="@+id/model"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="7dp"
-                    android:background="@drawable/bg_pill"
-                    android:fontFamily="monospace"
-                    android:paddingHorizontal="10dp"
-                    android:paddingVertical="5dp"
-                    android:text="@string/nullexp"
-                    android:textColor="?attr/otaPillText"
-                    android:textSize="12sp" />
-                <TextView
-                    android:id="@+id/codename"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/bg_pill"
-                    android:fontFamily="monospace"
-                    android:paddingHorizontal="10dp"
-                    android:paddingVertical="5dp"
-                    android:textColor="?attr/otaPillText"
-                    android:textSize="12sp"
-                    tools:text="husky" />
-            </LinearLayout>
+                android:background="@drawable/bg_pill"
+                android:fontFamily="monospace"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="5dp"
+                android:layout_marginBottom="20dp"
+                android:textColor="?attr/otaPillText"
+                android:textSize="12sp"
+                tools:text="CPH2723" />
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
-                android:layout_marginBottom="12dp"
+                android:layout_marginBottom="15dp"
                 android:background="?attr/otaBorder" />
             <LinearLayout
                 android:layout_width="match_parent"
@@ -113,7 +97,7 @@
                     android:id="@+id/checkingSpinner"
                     android:layout_width="14dp"
                     android:layout_height="14dp"
-                    android:layout_marginEnd="6dp"
+                    android:layout_marginEnd="10dp"
                     android:indeterminateTint="?attr/otaBorder"
                     android:visibility="visible" />
                 <TextView
@@ -127,33 +111,49 @@
             </LinearLayout>
         </LinearLayout>
     </FrameLayout>
-    <LinearLayout
+    <Button
+        android:id="@+id/checkUpdateButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="6dp"
-        android:layout_marginStart="6dp"
-        android:orientation="horizontal">
-        <Button
-            android:id="@+id/checkUpdateButton"
-            android:layout_width="0dp"
-            android:layout_height="46dp"
-            android:layout_weight="1"
-            android:layout_marginEnd="9dp"
-            android:background="@drawable/bg_button_primary"
-            android:elevation="0dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="10dp"
+        android:background="@drawable/bg_button_primary"
+        android:fontFamily="@font/inter_medium"
+        android:text="@string/check_for_update"
+        android:textAllCaps="false"
+        android:textColor="?attr/otaAccentOn"
+        android:textSize="14sp" />
+    <View
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="0dp" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/main_card"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackgroundBorderless"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingHorizontal="22dp"
+        android:paddingVertical="14dp">
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_launcher_foreground"
+            app:tint="?android:attr/textColorPrimary" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
             android:fontFamily="@font/inter_medium"
-            android:text="@string/check_for_update"
-            android:textAllCaps="false"
-            android:textColor="?attr/otaAccentOn"
-            android:textSize="14sp" />
-        <ImageButton
-            android:id="@+id/changelogButton"
-            android:layout_width="46dp"
-            android:layout_height="46dp"
-            android:background="@drawable/bg_button_secondary"
-            android:contentDescription="@string/view_changelog"
-            android:src="@android:drawable/ic_menu_recent_history"
-            app:tint="?attr/otaTextPrim" />
+            android:text="@string/status_up_to_date"
+            android:textColor="?android:attr/textColorPrimary"
+            android:textSize="13sp" />
     </LinearLayout>
 </LinearLayout>
