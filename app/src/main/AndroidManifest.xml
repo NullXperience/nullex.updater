@@ -7,8 +7,7 @@
     // Source - https://stackoverflow.com/q/15123742
     // Posted by Stephane, modified by community. See post 'Timeline' for change history
     // Retrieved 2026-08-26, License - CC BY-SA 3.0
-    <uses-permission android:name="android.permission.REBOOT"
-        tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="android.permission.REBOOT" tools:ignore="ProtectedPermissions" />
     <uses-permission android:name="android.permission.ACCESS_CACHE_FILESYSTEM" tools:ignore="ProtectedPermissions" />
     <uses-permission android:name="android.permission.DELETE_CACHE_FILES" tools:ignore="ProtectedPermissions" />
     <application

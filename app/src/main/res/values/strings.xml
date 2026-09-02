@@ -1,13 +1,26 @@
 <resources>
     <string name="app_name">Null Updates</string>
     <string name="checking">Checking for updates…</string>
-    <string name="version">8.5</string>
-    <string name="build_version_label">Build version</string>
-    <string name="status_up_to_date">Up to date</string>
-    <string name="status_update_available">Update available</string>
     <string name="status_error">Couldn\'t check for update</string>
     <string name="check_for_update">Check for update</string>
-    <string name="view_changelog">View changelog</string>
     <string name="nullexp">NullXperience</string>
     <string name="currentdev">CURRENT DEVICE</string>
+    <string name="change">Changelogs</string>
+    <string name="status_up_to_date">Up to date</string>
+    <string name="status_old_to_date">Old to date</string>
+    <string name="nointernet">No internet connection available. Please connect to a wifi and try again.</string>
+    <string name="brand_plus_model">%1$s %2$s</string>
+    <string name="found">Update found!</string>
+    <string name="not_supported">Oops, your device is not supported.</string>
+    <string name="close_the_app">Close the app</string>
+    <string name="download">Download &amp; Install</string>
+    <string name="not_found">Not found!</string>
+    <string-array name="randText">
+        <item>downloading bro, please stop blushing at me you piece of junk</item>
+        <item>oh yeahh, now i\'m actually mad and you will never know what will happen- bro, im just a corny- im the main char twin</item>
+        <item>zesty ahh messages in the big 26 feels like some shii that will only happen in corny ass movies</item>
+        <item>i never asked you to tap this shit bro, ts ain\'t sum fire button you\'d see on pubg</item>
+        <item>i was lightning before the thunder </item>
+        <item>icl ts pmo ngl u pmo too gng u btr nt lrp gng btr strt kys</item>
+    </string-array>
 </resources>

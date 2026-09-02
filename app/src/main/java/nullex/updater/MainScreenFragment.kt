@@ -1,48 +1,119 @@
 package nullex.updater
+import android.content.Context.CONNECTIVITY_SERVICE
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
+import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.FrameLayout
+import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.ProgressBar
+import android.widget.TextView
+import android.widget.Toast
+import androidx.lifecycle.lifecycleScope
+import com.google.android.material.color.MaterialColors
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import nullex.updater.fetch.api.ChangelogReference
+import nullex.updater.fetch.api.ClientManager
+import nullex.updater.fetch.api.OtaModel
+import kotlin.time.Duration.Companion.milliseconds
 class MainScreenFragment : Fragment()
 {
+    // button init:
+    private lateinit var statLabel: TextView;
+    private lateinit var icStat: ImageView;
+    private lateinit var curDevice: TextView;
+    private lateinit var codenameOfDevice: TextView;
+    private lateinit var checkingSpinner: ProgressBar;
+    private lateinit var overlayTextView: TextView;
+    private lateinit var changelogText: TextView;
+    private lateinit var checkOta: FrameLayout;
+    private lateinit var checkOtaText: TextView;
+    private lateinit var updateProgressBar: ProgressBar;
+    private lateinit var divider: View;
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
     {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.main_screen, container, false)
     }
-    /*
     override fun onViewCreated(view: View, savedInstanceState: Bundle?)
     {
         super.onViewCreated(view, savedInstanceState);
-        val ovrTXT: TextView = view.findViewById(R.id.overlayTextView);
+        // yooo
+        statLabel = view.findViewById(R.id.statusLabel); // the one in the top right corner
+        icStat = view.findViewById(R.id.ic_stat); // The one before statLabel
+        curDevice = view.findViewById(R.id.currentDevice); // A text that is used to show the device model - inside the box
+        codenameOfDevice = view.findViewById(R.id.codename); // codename, below the one above.
+        checkingSpinner = view.findViewById(R.id.checkingSpinner); // djfoijoj iefojfpjfpjfpjfjfpef im verity im obesity im a j*bless entity
+        overlayTextView = view.findViewById(R.id.overlayTextView); // checking texxxxxxxxxxxxxxxxx
+        changelogText = view.findViewById(R.id.changelogText); // checking texxxxxxxxxxxxxxxxx
+        checkOta = view.findViewById(R.id.checkForUpdates); // otaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+        checkOtaText = view.findViewById(R.id.checkForUpdatesText); // otaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+        updateProgressBar = view.findViewById(R.id.updateProgressBar); /// update progress bar
+        divider = view.findViewById(R.id.dividerShit); /// the DIVIIVDJKNUF<K
+        // it starts with ONE THING IDK WHY IT DOESN'T EVEN MATTER HOW HARD YOU TRY
+        // xaxaxaxaxaxxaxa let's start and btw let's hide some of these stuff for now
+        codenameOfDevice.text = Build.MODEL;
+        checkingSpinner.visibility = View.GONE;
+        overlayTextView.visibility = View.GONE;
+        divider.visibility = View.GONE;
         if(!isInternetAvailable())
         {
-            ovrTXT.visibility = View.GONE;
-            view.findViewById<TextView>(R.id.no_internet_text).visibility = View.VISIBLE;
+            MaterialAlertDialogBuilder(requireContext()).setTitle(getString(R.string.app_name)).setMessage(getString(R.string.nointernet))
+                .setNegativeButton(getString(android.R.string.ok)) { dialog, which -> requireActivity().finish(); }.setCancelable(false).show()
         }
-        else viewLifecycleOwner.lifecycleScope.launch {
-            OtaMetadata.load();
-            view.findViewById<TextView>(R.id.model).text = OtaMetadata.deviceName;
-            if(!OtaMetadata.isSupported || OtaMetadata.preferredModel?.version == OtaMetadata.currentSystemVersion)
-            {
-                if(OtaMetadata.isSupported)
+        viewLifecycleOwner.lifecycleScope.launch {
+            OtaMetadata.loadModel();
+            curDevice.text = getString(R.string.brand_plus_model, Build.MANUFACTURER, OtaMetadata.deviceName);
+        }
+        checkOta.setOnClickListener { view ->
+            viewLifecycleOwner.lifecycleScope.launch {
+                OtaMetadata.load();
+                setElementState(View.VISIBLE, divider);
+                delay(3000L.milliseconds);
+                if(OtaMetadata.preferredModel?.version == OtaMetadata.currentSystemVersion)
                 {
-                    ovrTXT.text = getString(R.string.not_found);
-                    parentFragmentManager.beginTransaction()
-                        .setCustomAnimations(R.anim.slide_in, R.anim.fade_out, R.anim.fade_in, R.anim.slide_out)
-                        .replace(R.id.ThisFragmentContainer, NotFound()).commit();
+                    setElementState(View.GONE);
+                    checkOtaText.text = getString(R.string.not_found);
                 }
-                else ovrTXT.text = getString(R.string.unknown);
-            }
-            else if(OtaMetadata.preferredModel?.version != OtaMetadata.currentSystemVersion)
-            {
-                ovrTXT.text = getString(R.string.found);
-                parentFragmentManager.beginTransaction()
-                    .setCustomAnimations(R.anim.slide_in, R.anim.fade_out, R.anim.fade_in, R.anim.slide_out)
-                    .replace(R.id.ThisFragmentContainer, UpdatesAvailable()).commit();
+                else if(OtaMetadata.preferredModel?.version != OtaMetadata.currentSystemVersion)
+                {
+                    checkOtaText.text = getString(R.string.download);
+                    icStat.setImageResource(R.drawable.ic_status_dot_red);
+                    statLabel.text = getString(R.string.status_old_to_date);
+                    statLabel.setTextColor(MaterialColors.getColor(statLabel, R.attr.otaWarning));
+                    setElementState(View.VISIBLE, divider);
+                    checkingSpinner.visibility = View.GONE;
+                    changelogText.visibility = View.VISIBLE;
+                    overlayTextView.text = getString(R.string.change);
+                    // handle downloads here:
+                    view.setOnClickListener {
+                        updateProgressBar.visibility = View.VISIBLE;
+                        updateProgressBar.progress = 50;
+                        val text = resources.getStringArray(R.array.randText);
+                        val idx = (0..4).random()
+                        Toast.makeText(context, text[idx], Toast.LENGTH_SHORT).show();
+                    }
+                }
             }
         }
+    }
+    fun setElementState(state: Int)
+    {
+        checkingSpinner.visibility = state;
+        overlayTextView.visibility = state;
+    }
+    fun setElementState(state: Int, addView: View)
+    {
+        checkingSpinner.visibility = state;
+        overlayTextView.visibility = state;
+        addView.visibility = state;
     }
     fun isInternetAvailable(): Boolean
     {
@@ -72,22 +143,22 @@ class MainScreenFragment : Fragment()
             private set
         var isSupported: Boolean = true
             private set
-        var expandVersionInfo: Boolean = true
+        var isDeviceModelFetched: Boolean = false
+            private set
         var currentSystemVersion: String? = null
             private set;
         suspend fun load()
         {
+            if(!isDeviceModelFetched) return;
             val metadata = ClientManager.getOtaInfo();
-            val deviceModel = ClientManager.getDevices();
             //init
             currentSystemVersion = Build.DISPLAY.split(" ").getOrNull(1) ?: "1.0.0";
-            deviceName = deviceModel[Build.MODEL]?.name ?: Build.MODEL;
             //actualDeviceName = Build.MODEL.toString();
             actualDeviceName = "device_one"
             // isSupported = deviceName?.let { name -> metadata.supported.split(",").any { it.trim().equals(name.trim(), ignoreCase = true) } } == true;
             if(isSupported)
             {
-                preferredModel = metadata.models["device_one"];
+                preferredModel = metadata.models[actualDeviceName];
                 latestVersion = preferredModel!!.version;
                 versionSpecific = preferredModel!!.changelogs[preferredModel!!.version];
                 OTAUrl = versionSpecific!!.url;
@@ -97,6 +168,11 @@ class MainScreenFragment : Fragment()
                 isIncremental = versionSpecific!!.isIncremental;
             }
         }
+        suspend fun loadModel()
+        {
+            val deviceModel = ClientManager.getDevices();
+            deviceName = deviceModel[Build.MODEL]?.name ?: Build.MODEL;
+            isDeviceModelFetched = true;
+        }
     }
-    */
 }

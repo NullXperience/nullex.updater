@@ -32,6 +32,7 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.window)
+    implementation(libs.material)
     implementation(libs.retrofit)
     implementation(libs.retrofit.gson)
 }
