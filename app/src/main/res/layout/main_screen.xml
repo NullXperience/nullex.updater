@@ -39,6 +39,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/inter_medium"
             android:text="@string/status_up_to_date"
+            android:layout_marginBottom="1dp"
             android:textColor="?attr/otaAccentDim"
             android:textSize="12sp" />
     </LinearLayout>
@@ -111,6 +112,14 @@
                     android:textColor="?attr/otaTextSec"
                     android:textSize="13sp" />
             </LinearLayout>
+            <TextView
+                android:id="@+id/lastchecked"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inter_medium"
+                android:textColor="?attr/otaTextSec"
+                android:visibility="gone"
+                android:textSize="13sp" />
             <TextView
                 android:id="@+id/changelogText"
                 android:layout_width="match_parent"

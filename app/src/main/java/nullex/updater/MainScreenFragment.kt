@@ -1,5 +1,7 @@
 package nullex.updater
 import android.content.Context.CONNECTIVITY_SERVICE
+import android.content.Context.MODE_PRIVATE
+import android.content.SharedPreferences
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
@@ -10,7 +12,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
@@ -23,6 +24,8 @@ import nullex.updater.fetch.api.ChangelogReference
 import nullex.updater.fetch.api.ClientManager
 import nullex.updater.fetch.api.OtaModel
 import kotlin.time.Duration.Companion.milliseconds
+import android.icu.util.Calendar
+import androidx.core.content.edit
 class MainScreenFragment : Fragment()
 {
     // button init:
@@ -37,6 +40,9 @@ class MainScreenFragment : Fragment()
     private lateinit var checkOtaText: TextView;
     private lateinit var updateProgressBar: ProgressBar;
     private lateinit var divider: View;
+    private lateinit var lastUpdated: TextView;
+    private lateinit var calendarData: Calendar;
+    private lateinit var sharedPreferences: SharedPreferences;
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
     {
         // Inflate the layout for this fragment
@@ -57,30 +63,46 @@ class MainScreenFragment : Fragment()
         checkOtaText = view.findViewById(R.id.checkForUpdatesText); // otaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
         updateProgressBar = view.findViewById(R.id.updateProgressBar); /// update progress bar
         divider = view.findViewById(R.id.dividerShit); /// the DIVIIVDJKNUF<K
+        lastUpdated = view.findViewById(R.id.lastchecked);
+        calendarData = Calendar.getInstance();
+        sharedPreferences = requireContext().getSharedPreferences(UPDATER_PREFERENCES, MODE_PRIVATE);
         // it starts with ONE THING IDK WHY IT DOESN'T EVEN MATTER HOW HARD YOU TRY
         // xaxaxaxaxaxxaxa let's start and btw let's hide some of these stuff for now
         codenameOfDevice.text = Build.MODEL;
-        checkingSpinner.visibility = View.GONE;
-        overlayTextView.visibility = View.GONE;
-        divider.visibility = View.GONE;
+        setElementState(View.GONE, divider);
         if(!isInternetAvailable())
         {
             MaterialAlertDialogBuilder(requireContext()).setTitle(getString(R.string.app_name)).setMessage(getString(R.string.nointernet))
-                .setNegativeButton(getString(android.R.string.ok)) { dialog, which -> requireActivity().finish(); }.setCancelable(false).show()
+                .setNegativeButton(getString(android.R.string.ok)) { _, which -> requireActivity().finish(); }.setCancelable(false).show()
         }
-        viewLifecycleOwner.lifecycleScope.launch {
-            OtaMetadata.loadModel();
-            curDevice.text = getString(R.string.brand_plus_model, Build.MANUFACTURER, OtaMetadata.deviceName);
+        // let's check if we have the model name inside sharedPreferences and if not, let's just get it from the cloud and stop fetching it afterwards.
+        if(sharedPreferences.getString(MODEL_NAME, null) == null)
+        {
+            val diagView = layoutInflater.inflate(R.layout.loading_material, null);
+            diagView.findViewById<TextView>(R.id.loadingMessage).text = getString(R.string.fetching_info, "device model data");
+            val dialog = MaterialAlertDialogBuilder(requireContext()).setView(diagView).setCancelable(false).create();
+            viewLifecycleOwner.lifecycleScope.launch {
+                dialog.show();
+                OtaMetadata.deviceModel = ClientManager.getDevices()[Build.MODEL]?.name ?: Build.MODEL;
+                curDevice.text = getString(R.string.brand_plus_model, Build.MANUFACTURER, OtaMetadata.deviceModel);
+                dialog.dismiss();
+                sharedPreferences.edit {
+                    putString(MODEL_NAME, OtaMetadata.deviceModel);
+                }
+            }
         }
+        else curDevice.text = getString(R.string.brand_plus_model, Build.MANUFACTURER, sharedPreferences.getString(MODEL_NAME, null));
         checkOta.setOnClickListener { view ->
+            setElementState(View.VISIBLE, divider);
+            lastUpdated.text = getString(R.string.last_checked, calendarData.get(Calendar.DATE).toString(), calendarData.get(Calendar.MONTH).toString(), calendarData.get(Calendar.YEAR).toString());
             viewLifecycleOwner.lifecycleScope.launch {
                 OtaMetadata.load();
-                setElementState(View.VISIBLE, divider);
                 delay(3000L.milliseconds);
                 if(OtaMetadata.preferredModel?.version == OtaMetadata.currentSystemVersion)
                 {
-                    setElementState(View.GONE);
-                    checkOtaText.text = getString(R.string.not_found);
+                    checkingSpinner.visibility = View.GONE;
+                    overlayTextView.text = getString(R.string.lastest_ver);
+                    lastUpdated.visibility = View.VISIBLE;
                 }
                 else if(OtaMetadata.preferredModel?.version != OtaMetadata.currentSystemVersion)
                 {
@@ -97,7 +119,7 @@ class MainScreenFragment : Fragment()
                         updateProgressBar.visibility = View.VISIBLE;
                         updateProgressBar.progress = 50;
                         val text = resources.getStringArray(R.array.randText);
-                        val idx = (0..4).random()
+                        val idx = (0..5).random()
                         Toast.makeText(context, text[idx], Toast.LENGTH_SHORT).show();
                     }
                 }
@@ -123,8 +145,7 @@ class MainScreenFragment : Fragment()
     }
     object OtaMetadata {
         lateinit var actualDeviceName: String;
-        var deviceName: String? = null
-            private set
+        var deviceModel: String? = null;
         var buildID: String? = null
             private set
         var OTAUrl: String? = null
@@ -143,19 +164,15 @@ class MainScreenFragment : Fragment()
             private set
         var isSupported: Boolean = true
             private set
-        var isDeviceModelFetched: Boolean = false
-            private set
         var currentSystemVersion: String? = null
             private set;
         suspend fun load()
         {
-            if(!isDeviceModelFetched) return;
             val metadata = ClientManager.getOtaInfo();
             //init
-            currentSystemVersion = Build.DISPLAY.split(" ").getOrNull(1) ?: "1.0.0";
-            //actualDeviceName = Build.MODEL.toString();
+            currentSystemVersion = "1.0.1";
             actualDeviceName = "device_one"
-            // isSupported = deviceName?.let { name -> metadata.supported.split(",").any { it.trim().equals(name.trim(), ignoreCase = true) } } == true;
+            isSupported = actualDeviceName.let { name -> metadata.supported.split(",").any { it.trim().equals(name.trim(), ignoreCase = true) } } == true;
             if(isSupported)
             {
                 preferredModel = metadata.models[actualDeviceName];
@@ -167,12 +184,6 @@ class MainScreenFragment : Fragment()
                 buildID = versionSpecific!!.buildid;
                 isIncremental = versionSpecific!!.isIncremental;
             }
-        }
-        suspend fun loadModel()
-        {
-            val deviceModel = ClientManager.getDevices();
-            deviceName = deviceModel[Build.MODEL]?.name ?: Build.MODEL;
-            isDeviceModelFetched = true;
         }
     }
 }

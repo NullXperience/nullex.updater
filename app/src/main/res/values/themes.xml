@@ -25,7 +25,7 @@
         <item name="otaAccent">?attr/colorPrimary</item>
         <item name="otaAccentDim">?attr/colorOnPrimaryContainer</item>
         <item name="otaAccentOn">?attr/colorOnPrimary</item>
-        <item name="otaWarning">?attr/colorTertiary</item>
+        <item name="otaWarning">?attr/colorError</item>
         <item name="otaError">?attr/colorError</item>
         <!-- card -->
         <item name="mainCardSolid">?attr/colorPrimaryContainer</item>
