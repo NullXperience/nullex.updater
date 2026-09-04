@@ -172,69 +172,22 @@
         android:layout_width="0dp"
         android:layout_weight="1"
         android:layout_height="0dp" />
-    <LinearLayout
-        android:id="@+id/bottomTray"
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/floatingToolbar"
         android:layout_width="wrap_content"
-        android:layout_height="48dp"
-        android:layout_gravity="center_horizontal"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
         android:layout_marginBottom="30dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginEnd="5dp"
-        android:background="@drawable/main_card_liquid"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:paddingHorizontal="8dp">
-        <LinearLayout
-            android:id="@+id/aboutButton"
+        app:cardBackgroundColor="?attr/colorSurfaceContainer"
+        app:cardCornerRadius="32dp"
+        app:cardElevation="6dp"
+        app:strokeWidth="0dp">
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:clickable="true"
-            android:focusable="true"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:paddingHorizontal="14dp">
-            <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:contentDescription="@null"
-                android:src="@drawable/ic_user"
-                app:tint="?attr/colorOnSurfaceVariant" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="7dp"
-                android:fontFamily="@font/inter_medium"
-                android:text="@string/about"
-                android:textColor="?attr/colorOnSurfaceVariant"
-                android:textSize="12sp" />
-        </LinearLayout>
-        <View
-            android:layout_width="1dp"
-            android:layout_height="20dp"
-            android:background="?attr/dividerColor" />
-        <LinearLayout
-            android:id="@+id/settingsButton"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:clickable="true"
-            android:focusable="true"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:paddingHorizontal="14dp">
-            <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:contentDescription="@null"
-                android:src="@drawable/ic_settings"
-                app:tint="?attr/colorOnSurfaceVariant" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="7dp"
-                android:fontFamily="@font/inter_medium"
-                android:text="@string/settings"
-                android:textColor="?attr/colorOnSurfaceVariant"
-                android:textSize="12sp" />
-        </LinearLayout>
-    </LinearLayout>
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="15dp"
+            app:menu="@menu/top_app_bar_menu">
+        </com.google.android.material.appbar.MaterialToolbar>
+    </com.google.android.material.card.MaterialCardView>
 </LinearLayout>

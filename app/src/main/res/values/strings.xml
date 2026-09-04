@@ -29,4 +29,6 @@
     <string name="install">Install Now</string>
     <string name="about">About</string>
     <string name="settings">Settings</string>
+    <string name="made_with_love">Made with love.</string>
+    <string name="credits">Credits</string>
 </resources>
