@@ -25,4 +25,8 @@
     <string name="lastest_ver">You\'re up to date.</string>
     <string name="pls_wait">Please wait</string>
     <string name="fetching_info">Fetching %1$s…</string>
+    <string name="downloading">Downloading · %1$s</string>
+    <string name="install">Install Now</string>
+    <string name="about">About</string>
+    <string name="settings">Settings</string>
 </resources>

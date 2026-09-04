@@ -137,18 +137,12 @@
         android:id="@+id/checkForUpdates"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginTop="15dp"
         android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
         android:layout_marginEnd="10dp"
         android:background="@drawable/main_card"
         android:clickable="true"
         android:focusable="true">
-        <TextView
-            android:id="@+id/checkForUpdatesText"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="@string/check_for_update" />
         <ProgressBar
             android:id="@+id/updateProgressBar"
             style="?android:attr/progressBarStyleHorizontal"
@@ -157,55 +151,90 @@
             android:max="100"
             android:progressDrawable="@drawable/progress_bar"
             android:visibility="gone" />
+        <TextView
+            android:id="@+id/checkForUpdatesText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/check_for_update"
+            android:textColor="?attr/colorOnPrimary"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/updateProgressBarText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textColor="?attr/colorOnPrimary"
+            android:textStyle="bold"
+            android:visibility="gone" />
     </FrameLayout>
-    <!-- View
+    <View
         android:layout_width="0dp"
         android:layout_weight="1"
         android:layout_height="0dp" />
     <LinearLayout
         android:id="@+id/bottomTray"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="30dp"
-        android:background="@drawable/main_card"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:background="@drawable/main_card_liquid"
+        android:gravity="center"
         android:orientation="horizontal"
-        android:paddingHorizontal="20dp"
-        android:paddingVertical="10dp">
+        android:paddingHorizontal="8dp">
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <LinearLayout
-                android:layout_width="0dp"
+            android:id="@+id/aboutButton"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingHorizontal="14dp">
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:contentDescription="@null"
+                android:src="@drawable/ic_user"
+                app:tint="?attr/colorOnSurfaceVariant" />
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center_horizontal"
-                android:clickable="true"
-                android:focusable="true"
-                android:orientation="vertical">
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:contentDescription="@null"
-                    android:src="@drawable/change"
-                    app:tint="?android:attr/textColorPrimary" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp"
-                    android:fontFamily="@font/inter_medium"
-                    android:text="@string/change"
-                    android:textColor="?android:attr/textColorPrimary"
-                    android:textSize="13sp" />
-            </LinearLayout>
-            <View
-                android:layout_width="1dp"
-                android:layout_height="30dp"
-                android:layout_gravity="center_vertical"
-                android:layout_marginEnd="12dp"
-                android:layout_marginStart="12dp"
-                android:background="@android:color/white" />
+                android:layout_marginStart="7dp"
+                android:fontFamily="@font/inter_medium"
+                android:text="@string/about"
+                android:textColor="?attr/colorOnSurfaceVariant"
+                android:textSize="12sp" />
         </LinearLayout>
-    </LinearLayout-->
+        <View
+            android:layout_width="1dp"
+            android:layout_height="20dp"
+            android:background="?attr/dividerColor" />
+        <LinearLayout
+            android:id="@+id/settingsButton"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingHorizontal="14dp">
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:contentDescription="@null"
+                android:src="@drawable/ic_settings"
+                app:tint="?attr/colorOnSurfaceVariant" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="7dp"
+                android:fontFamily="@font/inter_medium"
+                android:text="@string/settings"
+                android:textColor="?attr/colorOnSurfaceVariant"
+                android:textSize="12sp" />
+        </LinearLayout>
+    </LinearLayout>
 </LinearLayout>

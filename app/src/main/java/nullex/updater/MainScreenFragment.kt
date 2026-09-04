@@ -41,6 +41,7 @@ class MainScreenFragment : Fragment()
     private lateinit var updateProgressBar: ProgressBar;
     private lateinit var divider: View;
     private lateinit var lastUpdated: TextView;
+    private lateinit var updateProgressBarText: TextView;
     private lateinit var calendarData: Calendar;
     private lateinit var sharedPreferences: SharedPreferences;
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
@@ -64,6 +65,7 @@ class MainScreenFragment : Fragment()
         updateProgressBar = view.findViewById(R.id.updateProgressBar); /// update progress bar
         divider = view.findViewById(R.id.dividerShit); /// the DIVIIVDJKNUF<K
         lastUpdated = view.findViewById(R.id.lastchecked);
+        updateProgressBarText = view.findViewById(R.id.updateProgressBarText);
         calendarData = Calendar.getInstance();
         sharedPreferences = requireContext().getSharedPreferences(UPDATER_PREFERENCES, MODE_PRIVATE);
         // it starts with ONE THING IDK WHY IT DOESN'T EVEN MATTER HOW HARD YOU TRY
@@ -116,8 +118,11 @@ class MainScreenFragment : Fragment()
                     overlayTextView.text = getString(R.string.change);
                     // handle downloads here:
                     view.setOnClickListener {
+                        checkOtaText.visibility = View.GONE;
                         updateProgressBar.visibility = View.VISIBLE;
+                        updateProgressBarText.visibility = View.VISIBLE;
                         updateProgressBar.progress = 50;
+                        updateProgressBarText.text = getString(R.string.downloading, "50%");
                         val text = resources.getStringArray(R.array.randText);
                         val idx = (0..5).random()
                         Toast.makeText(context, text[idx], Toast.LENGTH_SHORT).show();
@@ -170,7 +175,7 @@ class MainScreenFragment : Fragment()
         {
             val metadata = ClientManager.getOtaInfo();
             //init
-            currentSystemVersion = "1.0.1";
+            currentSystemVersion = "1.0.0";
             actualDeviceName = "device_one"
             isSupported = actualDeviceName.let { name -> metadata.supported.split(",").any { it.trim().equals(name.trim(), ignoreCase = true) } } == true;
             if(isSupported)

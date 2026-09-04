@@ -17,4 +17,5 @@
     <attr name="otaBgCardOuter" format="color" />
     <attr name="mainCardSolid" format="color" />
     <attr name="mainCardStroke" format="color" />
+    <attr name="dividerColor" format="color" />
 </resources>
