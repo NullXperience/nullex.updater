@@ -172,22 +172,39 @@
         android:layout_width="0dp"
         android:layout_weight="1"
         android:layout_height="0dp" />
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/floatingToolbar"
+    <FrameLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|center_horizontal"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="16dp"
         android:layout_marginBottom="30dp"
-        app:cardBackgroundColor="?attr/colorSurfaceContainer"
-        app:cardCornerRadius="32dp"
-        app:cardElevation="6dp"
-        app:strokeWidth="0dp">
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/toolbar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="15dp"
-            app:menu="@menu/top_app_bar_menu">
-        </com.google.android.material.appbar.MaterialToolbar>
-    </com.google.android.material.card.MaterialCardView>
+        android:background="@drawable/dock"
+        android:padding="6dp">
+        <FrameLayout
+            android:id="@+id/credits"
+            android:layout_width="72dp"
+            android:layout_height="64dp"
+            android:layout_gravity="center"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackgroundBorderless">
+            <ImageView
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="12dp"
+                android:src="@drawable/ic_user"
+                android:contentDescription="@string/credits"
+                app:tint="?attr/otaTextSec" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|bottom"
+                android:layout_marginBottom="9dp"
+                android:fontFamily="@font/inter_medium"
+                android:text="@string/credits"
+                android:textColor="?attr/otaTextSec"
+                android:textSize="11sp" />
+        </FrameLayout>
+    </FrameLayout>
 </LinearLayout>

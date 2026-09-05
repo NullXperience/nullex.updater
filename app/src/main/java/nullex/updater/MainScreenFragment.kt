@@ -42,6 +42,7 @@ class MainScreenFragment : Fragment()
     private lateinit var divider: View;
     private lateinit var lastUpdated: TextView;
     private lateinit var updateProgressBarText: TextView;
+    private lateinit var creditsWindow: FrameLayout;
     private lateinit var calendarData: Calendar;
     private lateinit var sharedPreferences: SharedPreferences;
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
@@ -66,6 +67,7 @@ class MainScreenFragment : Fragment()
         divider = view.findViewById(R.id.dividerShit); /// the DIVIIVDJKNUF<K
         lastUpdated = view.findViewById(R.id.lastchecked);
         updateProgressBarText = view.findViewById(R.id.updateProgressBarText);
+        creditsWindow = view.findViewById(R.id.credits);
         calendarData = Calendar.getInstance();
         sharedPreferences = requireContext().getSharedPreferences(UPDATER_PREFERENCES, MODE_PRIVATE);
         // it starts with ONE THING IDK WHY IT DOESN'T EVEN MATTER HOW HARD YOU TRY
@@ -129,6 +131,9 @@ class MainScreenFragment : Fragment()
                     }
                 }
             }
+        }
+        creditsWindow.setOnClickListener {
+            requireActivity().supportFragmentManager.beginTransaction().setCustomAnimations(R.anim.slide_in, R.anim.fade_out, R.anim.fade_in, R.anim.slide_out).replace(R.id.ThisFullscreenFragment, CreditsFragment()).addToBackStack(null).commit();
         }
     }
     fun setElementState(state: Int)

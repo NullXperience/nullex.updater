@@ -1,39 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/creditsWindow"
     android:orientation="vertical"
     android:paddingHorizontal="20dp"
     android:paddingTop="72dp"
     android:paddingBottom="32dp"
     android:fillViewport="true">
-    <ImageView
-        android:layout_width="@dimen/cloudSize"
-        android:layout_height="@dimen/cloudSize"
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="160dp"
+        android:layout_height="160dp"
         android:layout_gravity="center_horizontal"
-        android:src="@drawable/partlycloudy"
-        android:contentDescription="@string/app_name" />
+        android:layout_marginBottom="10dp"
+        app:cardBackgroundColor="?attr/otaBgCardInner"
+        app:cardCornerRadius="32dp"
+        app:cardElevation="0dp"
+        app:strokeColor="?attr/otaBorder"
+        app:strokeWidth="1dp">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_app"
+            android:contentDescription="@string/app_name"
+            android:scaleType="fitCenter" />
+    </com.google.android.material.card.MaterialCardView>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="-40dp"
         android:text="@string/app_name"
         android:textSize="30sp"
         android:textStyle="bold"
-        android:textColor="@android:color/white"
-        android:fontFamily="@font/san_frans_display" />
+        android:textColor="?attr/dividerColor"
+        android:fontFamily="@font/inter" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="-5dp"
-        android:text="@string/claudia_title"
+        android:text="@string/null_title"
         android:textSize="15sp"
-        android:textColor="#99FFFFFF"
-        android:fontFamily="@font/san_frans_display" />
+        android:textColor="?attr/otaTextMuted"
+        android:fontFamily="@font/inter" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -52,17 +62,17 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/weatherAPI"
-                android:textColor="#99FFFFFF"
+                android:text="@string/co_authors_title"
+                android:textColor="?attr/otaTextMuted"
                 android:textSize="16sp"
-                android:fontFamily="@font/san_frans_display"/>
+                android:fontFamily="@font/inter"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/open_meteo"
-                android:textColor="@android:color/white"
+                android:text="@string/co_authors"
+                android:textColor="?attr/otaTextMuted"
                 android:textSize="16sp"
-                android:fontFamily="@font/san_frans_display"/>
+                android:fontFamily="@font/inter"/>
         </LinearLayout>
         <View
             android:layout_width="match_parent"
@@ -81,25 +91,28 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/fonts"
-                android:textColor="#99FFFFFF"
+                android:textColor="?attr/otaTextMuted"
                 android:textSize="16sp"
-                android:fontFamily="@font/san_frans_display"/>
+                android:fontFamily="@font/inter"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/fonts_source"
-                android:textColor="@android:color/white"
+                android:textColor="?attr/otaTextMuted"
                 android:textSize="16sp"
-                android:fontFamily="@font/san_frans_display"/>
+                android:fontFamily="@font/inter"/>
         </LinearLayout>
     </LinearLayout>
+    <View
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="0dp" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="32dp"
-        android:text="@string/made_love"
-        android:textColor="#66FFFFFF"
+        android:text="@string/made_with_love"
+        android:textColor="?attr/otaTextMuted"
         android:textSize="13sp"
-        android:fontFamily="@font/san_frans_display"/>
+        android:fontFamily="@font/inter"/>
 </LinearLayout>
