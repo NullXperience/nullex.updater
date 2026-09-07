@@ -1,5 +1,11 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <style name="Base.Theme.NullUpdates" parent="Theme.Material3.DynamicColors.DayNight.NoActionBar">
+        <!-- System bars -->
+        <item name="android:statusBarColor">#F4F5F7</item>
+        <item name="android:navigationBarColor">#F4F5F7</item>
+        <!-- Dark icons/text on light system bars -->
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowLightNavigationBar">true</item>
         <!-- Cards -->
         <item name="otaBgCardOuter">#FFFFFF</item>
         <item name="otaBgCardInner">#F7F8FA</item>

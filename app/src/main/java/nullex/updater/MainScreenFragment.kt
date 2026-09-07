@@ -113,10 +113,11 @@ class MainScreenFragment : Fragment()
                     checkOtaText.text = getString(R.string.download);
                     icStat.setImageResource(R.drawable.ic_status_dot_red);
                     statLabel.text = getString(R.string.status_old_to_date);
-                    statLabel.setTextColor(MaterialColors.getColor(statLabel, R.attr.otaWarning));
+                    statLabel.setTextColor(MaterialColors.getColor(statLabel, R.attr.otaError));
                     setElementState(View.VISIBLE, divider);
                     checkingSpinner.visibility = View.GONE;
                     changelogText.visibility = View.VISIBLE;
+                    changelogText.text = OtaMetadata.preferredModel!!.versions[OtaMetadata.latestVersion]!!.changelogs.joinToString(separator = "\n") { "• $it" };
                     overlayTextView.text = getString(R.string.change);
                     // handle downloads here:
                     view.setOnClickListener {
@@ -181,13 +182,13 @@ class MainScreenFragment : Fragment()
             val metadata = ClientManager.getOtaInfo();
             //init
             currentSystemVersion = "1.0.0";
-            actualDeviceName = "device_one"
+            actualDeviceName = Build.MODEL.toString();
             isSupported = actualDeviceName.let { name -> metadata.supported.split(",").any { it.trim().equals(name.trim(), ignoreCase = true) } } == true;
             if(isSupported)
             {
                 preferredModel = metadata.models[actualDeviceName];
-                latestVersion = preferredModel!!.version;
-                versionSpecific = preferredModel!!.changelogs[preferredModel!!.version];
+                latestVersion = preferredModel?.version;
+                versionSpecific = preferredModel?.versions[latestVersion];
                 OTAUrl = versionSpecific!!.url;
                 SHA256 = versionSpecific!!.sha256;
                 size = versionSpecific!!.size;
@@ -195,5 +196,12 @@ class MainScreenFragment : Fragment()
                 isIncremental = versionSpecific!!.isIncremental;
             }
         }
+    }
+    object OtaURL {
+        // url for retrofit, we would change this later on in the settings so i thought it would be a great idea to
+        // just keep it this way so we can mod it later.
+        var MODEL_URL = "https://raw.githubusercontent.com/bsthen/device-models/refs/heads/main/devices.json";
+        var OTA_URL = "https://github.com/NullXperience/json_ota/releases/download/test/";
+        var METADATA_URL = "https://raw.githubusercontent.com/NullXperience/json_ota/refs/heads/main/ota.json";
     }
 }

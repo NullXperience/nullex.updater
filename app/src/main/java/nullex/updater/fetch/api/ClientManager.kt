@@ -3,6 +3,9 @@ import android.content.Context
 import android.widget.ProgressBar
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import nullex.updater.MainScreenFragment.OtaURL.MODEL_URL
+import nullex.updater.MainScreenFragment.OtaURL.METADATA_URL
+import nullex.updater.MainScreenFragment.OtaURL.OTA_URL
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.io.File
@@ -14,13 +17,12 @@ data class OtaResponse (
     val models: Map<String, OtaModel>,
     val supported: String
 )
-data class OtaModel (
-    val changelogs: Map<String, ChangelogReference>,
+data class OtaModel(
+    val versions: Map<String, ChangelogReference>,
     val version: String
 )
 data class ChangelogReference (
-    val changelogHeader: String,
-    val changelogs: String,
+    val changelogs: List<String>,
     val buildid: String,
     val isIncremental: Boolean,
     val isFull: Boolean,
@@ -30,9 +32,6 @@ data class ChangelogReference (
 )
 object ClientManager {
     private const val BASE_URL = "https://raw.githubusercontent.com/";
-    private const val MODEL_URL = "https://raw.githubusercontent.com/bsthen/device-models/refs/heads/main/devices.json";
-    private const val OTA_URL = "https://github.com/NullXperience/json_ota/releases/download/test/";
-    private const val METADATA_URL = "https://raw.githubusercontent.com/NullXperience/json_ota/refs/heads/main/ota.json";
     private val retrofit: Retrofit by lazy {
         Retrofit.Builder()
             .baseUrl(BASE_URL)
